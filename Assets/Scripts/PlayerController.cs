@@ -18,22 +18,31 @@ public class PlayerController : MonoBehaviour
     private bool puedeMoverse = true;
 
     [Header("Salto")]
-    public float fuerzaSalto = 5f;
+    public float fuerzaSaltoSuelo = 5f;
+    public float fuerzaSaltoAire = 8f;
     public float aceleracionCaida = 2.5f;
     public float aceleracionSalto = 2.0f;
-    public Vector2 pies;
     public float distanciaUmbral = 1.25f;
+    public int saltosExtra;
+    private int saltosExtraRestantes;
+    private bool puedeSaltar = true;
+    public Vector2 pies;
 
     [Header("Colisiones")]
-    public float radioColision;
+    public float anchoCaja;
+    public float altoCaja;
     public bool enSuelo = true;
     public LayerMask layerPiso;
 
     [Header("Dash")]
     public float velocidadDash = 15f;
     public float tiempoDash = 0.3f;
-    public bool puedeDashear = true;
-    public float gravedadInicial;
+    public int dashesPermitidos;
+    public float cooldownDash = 0.5f;
+    private float ultimoTiempoDash = 0;
+    private float gravedadInicial;
+    private bool puedeDashear = true;
+    private int contadorDashes;
 
     [SerializeField]
     TrailRenderer trailRenderer;
@@ -102,18 +111,54 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("jump", false);
         }
+        contadorDashes = 0;
     }
 
     private void Saltar()
     {
-        if (Input.GetButtonDown("Jump") && enSuelo)
+        if (Input.GetButtonDown("Jump"))
         {
-            animator.SetBool("jump", true);
-            //* Establece la velocidad vertical del Rigidbody a 0.
-            //* Esto es útil para normalizar la velocidad antes de aplicar la fuerza de salto.
+            if (enSuelo)
+            {
+                saltosExtraRestantes = saltosExtra;
+                puedeSaltar = true;
+                animator.SetBool("jump", true);
+                EjecutarSaltoSuelo();
+            } 
+            else
+            {
+                if (saltosExtraRestantes > 0)
+                {
+                    puedeSaltar = true;
+                    saltosExtraRestantes -= 1;
+                    animator.SetBool("jump", true);
+                    EjecutarSaltoAire();
+                }
+                else
+                {
+                    puedeSaltar = false;
+                }
+            }
+        }
+    }
+
+    private void EjecutarSaltoAire()
+    {
+        if (puedeSaltar)
+        {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-            // * Acá se aplica el salto al rigidbody
-            rigidBody.velocity += Vector2.up * fuerzaSalto;
+            rigidBody.velocity += Vector2.up * fuerzaSaltoAire;
+            puedeSaltar = false;
+        }
+    }
+
+    private void EjecutarSaltoSuelo()
+    {
+        if (puedeSaltar)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+            rigidBody.velocity += Vector2.up * fuerzaSaltoSuelo;
+            puedeSaltar = false;
         }
     }
 
@@ -135,20 +180,21 @@ public class PlayerController : MonoBehaviour
 
     private void AgarreSalto()
     {
-        enSuelo = Physics2D.OverlapCircle(
+        Vector2 tamanoCaja = new Vector2(anchoCaja, altoCaja);
+
+        enSuelo = Physics2D.OverlapBox(
             (Vector2)transform.position + pies,
-            radioColision,
+            tamanoCaja,
+            0,
             layerPiso
         );
     }
 
     void OnDrawGizmos()
     {
-        // Configurar el color del Gizmo
         Gizmos.color = Color.blue;
-
-        // Dibujar un círculo en la posición donde se verifica el suelo
-        Gizmos.DrawWireSphere((Vector2)transform.position + pies, radioColision);
+        Vector2 tamanoCaja = new Vector2(anchoCaja, altoCaja);
+        Gizmos.DrawWireCube((Vector2)transform.position + pies, tamanoCaja);
     }
 
     private void NoCaer()
@@ -240,18 +286,39 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator EjecutarDash()
     {
-        puedeMoverse = false;
-        puedeDashear = false;
-        rigidBody.gravityScale = 0;
+        if (Time.time - ultimoTiempoDash > cooldownDash)
+        {
+            puedeMoverse = false;
+            puedeSaltar = false;
+            puedeDashear = false;
+            rigidBody.gravityScale = 0;
+            if (!enSuelo && contadorDashes < dashesPermitidos)
+            {
+                Dashear();
+                contadorDashes += 1;
+            }
+            else if (enSuelo)
+            {
+                contadorDashes = 0;
+                Dashear();
+            }
+
+            ultimoTiempoDash = Time.time;
+
+            yield return new WaitForSeconds(tiempoDash);
+
+            puedeMoverse = true;
+            puedeSaltar = true;
+            puedeDashear = true;
+            rigidBody.gravityScale = gravedadInicial;
+            trailRenderer.emitting = false;
+        }
+    }
+
+    private void Dashear()
+    {
         rigidBody.velocity = new Vector2(velocidadDash * Mathf.Sign(transform.localScale.x), 0);
         animator.SetTrigger("dash");
         trailRenderer.emitting = true;
-
-        yield return new WaitForSeconds(tiempoDash);
-
-        puedeMoverse = true;
-        puedeDashear = true;
-        rigidBody.gravityScale = gravedadInicial;
-        trailRenderer.emitting = false;
     }
 }

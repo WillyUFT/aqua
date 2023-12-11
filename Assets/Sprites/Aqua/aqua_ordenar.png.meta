@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ebfbd1d4bac62947ada6aa80dd6bec1
+guid: c72dd0c6fba02c345b9d3e0db4bc01c7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aqua_idle_0
+      name: aqua_ordenar_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,41 +131,41 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2a45d53345f3c140952fc2d3dd93f27
-      internalID: 1444419722
+      spriteID: bbf1d7444ce46b048abdd8ce1623b143
+      internalID: -1839097590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_1
+      name: aqua_ordenar_1
       rect:
         serializedVersion: 2
-        x: 255
+        x: 256
         y: 1792
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2472eee49d04948458f98b30f68a601d
-      internalID: -1663918507
+      spriteID: 14c3d1229315d414d8a6eea51637c631
+      internalID: 1895047476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_2
+      name: aqua_ordenar_2
       rect:
         serializedVersion: 2
         x: 512
@@ -173,20 +173,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7258cc411c6be7f46bc1e1c4a9a5ec23
-      internalID: 975789166
+      spriteID: 616c518bc8120654aa32e2aecb5baf37
+      internalID: -1224531844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_3
+      name: aqua_ordenar_3
       rect:
         serializedVersion: 2
         x: 768
@@ -194,20 +194,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b810a885cef5e34da9012be1f886f42
-      internalID: 1235331840
+      spriteID: afb3bc567cb6e8d46b868c3c69054499
+      internalID: -1716191731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_4
+      name: aqua_ordenar_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -215,20 +215,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c04585701409ad458d5c7bd7cf6623d
-      internalID: 2116116337
+      spriteID: 12342eeb8e6c39041bc79a020f9ac2f1
+      internalID: -1861624192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_5
+      name: aqua_ordenar_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -236,20 +236,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e5060663bcf80b48b5bcf94a10d511d
-      internalID: 1560429180
+      spriteID: 2f961d5f423226047956180816f2c72f
+      internalID: 2083694316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_6
+      name: aqua_ordenar_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -257,20 +257,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d540eedb63a79394f992a29f8748658c
-      internalID: 1299799380
+      spriteID: e7f9c05a7b4b8a74e8dc30c914427a21
+      internalID: 1758142134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_7
+      name: aqua_ordenar_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -278,20 +278,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af235b78a16537f498a710a074661719
-      internalID: 1886347466
+      spriteID: 2294ffe25e5b27e428ebfe71224e4cf0
+      internalID: 1168782655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_8
+      name: aqua_ordenar_8
       rect:
         serializedVersion: 2
         x: 0
@@ -299,20 +299,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3c0b3bf8556dd843b65de2a4d5b1c19
-      internalID: 1128770296
+      spriteID: 33e7d58b03c3b4d4a9323f43e58347d9
+      internalID: -1070858573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_9
+      name: aqua_ordenar_9
       rect:
         serializedVersion: 2
         x: 256
@@ -320,20 +320,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12d8bdfd3b86bb0439540345270a774e
-      internalID: 1562260323
+      spriteID: 314f56ec44f7fdc4bbc9e37d3c13ee1b
+      internalID: 2074685055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_10
+      name: aqua_ordenar_10
       rect:
         serializedVersion: 2
         x: 512
@@ -341,20 +341,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 742ac00474a6f444bb6ab612e37aceb3
-      internalID: -1210499435
+      spriteID: df67855bf264d4049b10ff656109eeec
+      internalID: -2140509939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_11
+      name: aqua_ordenar_11
       rect:
         serializedVersion: 2
         x: 768
@@ -362,20 +362,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a255fe5b30335424783884370be74eab
-      internalID: -169447406
+      spriteID: 5d425094f1b280c4bbfa126bc2cccc96
+      internalID: 1810762053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_12
+      name: aqua_ordenar_12
       rect:
         serializedVersion: 2
         x: 1024
@@ -383,20 +383,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a792dbf554a7b94c88cf933482a3b45
-      internalID: 208937693
+      spriteID: 12f18b2e9b2c9d84db08b6f3c8caf565
+      internalID: -1041518103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_13
+      name: aqua_ordenar_13
       rect:
         serializedVersion: 2
         x: 1280
@@ -404,20 +404,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78bf2b361537db844b2d8a8a42dd0c24
-      internalID: 829102746
+      spriteID: 01c7b9c221226bd4cbfccec473c9a9f3
+      internalID: 1926664985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_14
+      name: aqua_ordenar_14
       rect:
         serializedVersion: 2
         x: 1536
@@ -425,20 +425,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 797201dd3f5802347b6e05ab776abd2c
-      internalID: 2033878260
+      spriteID: cb61e1c28007d944194a964ba0227fc1
+      internalID: -887529365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_15
+      name: aqua_ordenar_15
       rect:
         serializedVersion: 2
         x: 1792
@@ -446,20 +446,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2657ae524a0e2814e94fceacf0f18cac
-      internalID: 1956826743
+      spriteID: f1f96f4c03457bd4794c2f0034b6d88e
+      internalID: -1622849325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_16
+      name: aqua_ordenar_16
       rect:
         serializedVersion: 2
         x: 0
@@ -467,20 +467,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c955e0e9f628cf4189008fb2abc4c35
-      internalID: -876365408
+      spriteID: 395530dff07dd3f429084070258c1d3b
+      internalID: -1908694320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_17
+      name: aqua_ordenar_17
       rect:
         serializedVersion: 2
         x: 256
@@ -488,20 +488,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd15cc16a038ac54792e908894126461
-      internalID: 648277484
+      spriteID: f5831a3ea8202aa44b92d03b277355cd
+      internalID: 1987104911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_18
+      name: aqua_ordenar_18
       rect:
         serializedVersion: 2
         x: 512
@@ -509,20 +509,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f28f0370dc482f4a84511fde80ed063
-      internalID: -1790550103
+      spriteID: 742838c0e73757e479950e8147a1a54c
+      internalID: -778012726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_19
+      name: aqua_ordenar_19
       rect:
         serializedVersion: 2
         x: 768
@@ -530,20 +530,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1e18b497d9f6a84caf910a346cdd8ed
-      internalID: -1625977572
+      spriteID: 9e7b3fd861627e9469446e2b11c2e43d
+      internalID: -1998820308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_20
+      name: aqua_ordenar_20
       rect:
         serializedVersion: 2
         x: 1024
@@ -551,20 +551,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73387c5c400594e40b4d247edd760c94
-      internalID: -1560727862
+      spriteID: a05ebbc4792f2c7468fa91df6909729f
+      internalID: -1183620035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_21
+      name: aqua_ordenar_21
       rect:
         serializedVersion: 2
         x: 1280
@@ -572,20 +572,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee5bf133b6bc94449ba8b055c83641c9
-      internalID: 595059564
+      spriteID: 8e6e2ed01b0bc4e4e9a982fe2d240bb3
+      internalID: 1480453037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_22
+      name: aqua_ordenar_22
       rect:
         serializedVersion: 2
         x: 1536
@@ -593,20 +593,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0896ac5d276c0546aaba8a116beb9d7
-      internalID: -1713055471
+      spriteID: 0b62730d9592dfa43a6e2c1584a4e535
+      internalID: 1487933302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_23
+      name: aqua_ordenar_23
       rect:
         serializedVersion: 2
         x: 1792
@@ -614,20 +614,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48f2e0b719c40d745b8349a86e89e1a4
-      internalID: 1463351330
+      spriteID: 3876ede0f0471f641b1b921ed26b84f1
+      internalID: 1377842632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_24
+      name: aqua_ordenar_24
       rect:
         serializedVersion: 2
         x: 0
@@ -635,20 +635,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d702dc317e701184eade63b3b531bcbc
-      internalID: -2022487373
+      spriteID: 9ff0f41cf044236419048dc012c8fe65
+      internalID: 1278756790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_25
+      name: aqua_ordenar_25
       rect:
         serializedVersion: 2
         x: 256
@@ -656,20 +656,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f561e964bc60e544abd6e70ae0722935
-      internalID: 552961300
+      spriteID: 29dae9510489aab4b82611b46a32cc3f
+      internalID: 777804723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_26
+      name: aqua_ordenar_26
       rect:
         serializedVersion: 2
         x: 512
@@ -677,20 +677,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35233c7d5b4ca2e4f8cf5e99b9b976f4
-      internalID: -629296246
+      spriteID: 3e8ed77c14c1bb44796a066325bb8bd8
+      internalID: 276881303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_27
+      name: aqua_ordenar_27
       rect:
         serializedVersion: 2
         x: 768
@@ -698,20 +698,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faf392d4a3a49e04aa38499c61a2386c
-      internalID: -1545804171
+      spriteID: ceb2ce050e2340c48b6f8aea573b1d72
+      internalID: 1893818545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_28
+      name: aqua_ordenar_28
       rect:
         serializedVersion: 2
         x: 1024
@@ -719,20 +719,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a39bc2744f7ef484d9f9e3199964e377
-      internalID: -29105490
+      spriteID: 0ec954cf93aa92a48b2c0dce981d0e58
+      internalID: -1182100592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_29
+      name: aqua_ordenar_29
       rect:
         serializedVersion: 2
         x: 1280
@@ -740,20 +740,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67433e9f848e9f042a307e6a1daee3ce
-      internalID: 513836605
+      spriteID: 8eee4635daf5966408528f384628f927
+      internalID: -1060304823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_30
+      name: aqua_ordenar_30
       rect:
         serializedVersion: 2
         x: 1536
@@ -761,20 +761,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d29e0aeb42c797d49be98186ca8c94f6
-      internalID: 122206684
+      spriteID: c20d4d47b6fc5244aae1b166e6a2bb2a
+      internalID: 697960867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_31
+      name: aqua_ordenar_31
       rect:
         serializedVersion: 2
         x: 1792
@@ -782,20 +782,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9b20f1efb1076049825b66a27d7f5b1
-      internalID: -663552729
+      spriteID: 37a081468071c3045b49292775f4aecc
+      internalID: 1317541369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_32
+      name: aqua_ordenar_32
       rect:
         serializedVersion: 2
         x: 0
@@ -803,20 +803,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b35b704cad7339548a3fa566aba01653
-      internalID: 1764036751
+      spriteID: be5b7f58f6b78da40a33a73a77583c09
+      internalID: 1846899799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_33
+      name: aqua_ordenar_33
       rect:
         serializedVersion: 2
         x: 256
@@ -824,20 +824,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cebc4abdc6feaf439b01d6e27ac7df7
-      internalID: -2092218481
+      spriteID: 35f8b3ef41404044aa9b6299069e3451
+      internalID: 1484494441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_34
+      name: aqua_ordenar_34
       rect:
         serializedVersion: 2
         x: 512
@@ -845,20 +845,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df32967bf4b063e4e819913c8fdeaca4
-      internalID: 2124142504
+      spriteID: 2a7a5ffd9e00dc04683798136e58acee
+      internalID: 12047771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_35
+      name: aqua_ordenar_35
       rect:
         serializedVersion: 2
         x: 768
@@ -866,20 +866,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 110a3be40bd744b4cbdcf84405955f28
-      internalID: 2115908705
+      spriteID: 02e40cf864e47384f9704653967c8125
+      internalID: 1755231892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_36
+      name: aqua_ordenar_36
       rect:
         serializedVersion: 2
         x: 1024
@@ -887,20 +887,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91bded2e48d45e749ad318f5a2902008
-      internalID: -944254658
+      spriteID: 1d2ae2c82bba44044a7b9bcbaab051f2
+      internalID: -1110731727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_37
+      name: aqua_ordenar_37
       rect:
         serializedVersion: 2
         x: 1280
@@ -908,20 +908,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 723a24b2269e2ba4f8cf4db843f7dd28
-      internalID: 1781508598
+      spriteID: 4f31dc2de25d4de449d7e98c95829dec
+      internalID: -2118112249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_38
+      name: aqua_ordenar_38
       rect:
         serializedVersion: 2
         x: 1536
@@ -929,20 +929,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55c6e4028530c8e4b98d511b9c7d9d85
-      internalID: 430005983
+      spriteID: 23dcb38f9a785ec429a096c3f11ad7b3
+      internalID: 559582798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_idle_39
+      name: aqua_ordenar_39
       rect:
         serializedVersion: 2
         x: 1792
@@ -950,14 +950,14 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 173768c818eda204ba87d4f31ac58140
-      internalID: 2000396250
+      spriteID: 909809e411ff9374ba6cbdc83155b3d4
+      internalID: 578386080
       vertices: []
       indices: 
       edges: []
@@ -973,46 +973,46 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      aqua_idle_0: 1444419722
-      aqua_idle_1: -1663918507
-      aqua_idle_10: -1210499435
-      aqua_idle_11: -169447406
-      aqua_idle_12: 208937693
-      aqua_idle_13: 829102746
-      aqua_idle_14: 2033878260
-      aqua_idle_15: 1956826743
-      aqua_idle_16: -876365408
-      aqua_idle_17: 648277484
-      aqua_idle_18: -1790550103
-      aqua_idle_19: -1625977572
-      aqua_idle_2: 975789166
-      aqua_idle_20: -1560727862
-      aqua_idle_21: 595059564
-      aqua_idle_22: -1713055471
-      aqua_idle_23: 1463351330
-      aqua_idle_24: -2022487373
-      aqua_idle_25: 552961300
-      aqua_idle_26: -629296246
-      aqua_idle_27: -1545804171
-      aqua_idle_28: -29105490
-      aqua_idle_29: 513836605
-      aqua_idle_3: 1235331840
-      aqua_idle_30: 122206684
-      aqua_idle_31: -663552729
-      aqua_idle_32: 1764036751
-      aqua_idle_33: -2092218481
-      aqua_idle_34: 2124142504
-      aqua_idle_35: 2115908705
-      aqua_idle_36: -944254658
-      aqua_idle_37: 1781508598
-      aqua_idle_38: 430005983
-      aqua_idle_39: 2000396250
-      aqua_idle_4: 2116116337
-      aqua_idle_5: 1560429180
-      aqua_idle_6: 1299799380
-      aqua_idle_7: 1886347466
-      aqua_idle_8: 1128770296
-      aqua_idle_9: 1562260323
+      aqua_ordenar_0: -1839097590
+      aqua_ordenar_1: 1895047476
+      aqua_ordenar_10: -2140509939
+      aqua_ordenar_11: 1810762053
+      aqua_ordenar_12: -1041518103
+      aqua_ordenar_13: 1926664985
+      aqua_ordenar_14: -887529365
+      aqua_ordenar_15: -1622849325
+      aqua_ordenar_16: -1908694320
+      aqua_ordenar_17: 1987104911
+      aqua_ordenar_18: -778012726
+      aqua_ordenar_19: -1998820308
+      aqua_ordenar_2: -1224531844
+      aqua_ordenar_20: -1183620035
+      aqua_ordenar_21: 1480453037
+      aqua_ordenar_22: 1487933302
+      aqua_ordenar_23: 1377842632
+      aqua_ordenar_24: 1278756790
+      aqua_ordenar_25: 777804723
+      aqua_ordenar_26: 276881303
+      aqua_ordenar_27: 1893818545
+      aqua_ordenar_28: -1182100592
+      aqua_ordenar_29: -1060304823
+      aqua_ordenar_3: -1716191731
+      aqua_ordenar_30: 697960867
+      aqua_ordenar_31: 1317541369
+      aqua_ordenar_32: 1846899799
+      aqua_ordenar_33: 1484494441
+      aqua_ordenar_34: 12047771
+      aqua_ordenar_35: 1755231892
+      aqua_ordenar_36: -1110731727
+      aqua_ordenar_37: -2118112249
+      aqua_ordenar_38: 559582798
+      aqua_ordenar_39: 578386080
+      aqua_ordenar_4: -1861624192
+      aqua_ordenar_5: 2083694316
+      aqua_ordenar_6: 1758142134
+      aqua_ordenar_7: 1168782655
+      aqua_ordenar_8: -1070858573
+      aqua_ordenar_9: 2074685055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

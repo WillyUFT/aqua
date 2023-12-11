@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PlayerCombatController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerCombatController : MonoBehaviour
     [Header("Cooldown golpe normal")]
     public float cooldownAtaqueNormal = 0.5f;
     public float ultimoAtaqueNormal = 0;
+    public bool puedeAtacar = true;
 
     [Header("Animaciones")]
     public Animator animator;
@@ -25,20 +27,30 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Update()
     {
+        pulsarAtaque();
+    }
+
+    private void pulsarAtaque()
+    {
+        if (Input.GetButtonDown("Ataque") && puedeAtacar)
+        {
+            Debug.Log("antes del coroutine: " + puedeAtacar);
+            StartCoroutine(EjecutarAnimacionGolpe());
+            Debug.Log("después del coroutine: " + puedeAtacar);
+        }
+    }
+
+    private IEnumerator EjecutarAnimacionGolpe()
+    {
+        puedeAtacar = false;
         animacionGolpearNormal();
+        yield return new WaitForSeconds(0.3f);
+        puedeAtacar = true;
     }
 
     private void animacionGolpearNormal()
     {
-        if (cooldownAtaqueNormal > 0)
-        {
-            ultimoAtaqueNormal -= Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Fire1") && ultimoAtaqueNormal <= 0)
-        {
-            animator.SetTrigger("attack");
-        }
+        animator.SetTrigger("attack");
     }
 
     public void GolpearNormal()

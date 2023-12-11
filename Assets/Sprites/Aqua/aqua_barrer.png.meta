@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 71df56ebb10ba5f4eadb21686ef1924a
+guid: 2ec3b55cc0258b143af7bdfaf3e5b900
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aqua_dash_back_0
+      name: aqua_barrer_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2de49da49c92d84787036d6570fae2d
-      internalID: -1195581040
+      spriteID: 04293347f756b3f4f80627c4046f010a
+      internalID: -1669323700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_1
+      name: aqua_barrer_1
       rect:
         serializedVersion: 2
         x: 256
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f0c9280a40eb39479c868ed2d91ddf6
-      internalID: 49045750
+      spriteID: c0b70bcd3d9d8b4459e13e2d12f21a45
+      internalID: -1634025153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_2
+      name: aqua_barrer_2
       rect:
         serializedVersion: 2
         x: 512
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af407a12ee57459479811bc10e3f19d2
-      internalID: -2009991009
+      spriteID: 163f603d0a53d004a97dbbb13875e145
+      internalID: 861338580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_3
+      name: aqua_barrer_3
       rect:
         serializedVersion: 2
         x: 768
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b8862d16f0aae4491769b33463086e
-      internalID: 565621645
+      spriteID: 36a476c5718670649805f16dfb4b7a26
+      internalID: 1407584826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_4
+      name: aqua_barrer_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521ad91d8b7b957429a962e5b94d842a
-      internalID: 646937136
+      spriteID: 916c40bec737609468ad0311fcbcc001
+      internalID: -145724600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_5
+      name: aqua_barrer_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edbb7f8876f7d1e47ab7825eee52484b
-      internalID: 247018476
+      spriteID: c8d480b0fb577114b87540719a09872a
+      internalID: 1220728181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_6
+      name: aqua_barrer_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 452e8ff1a1d9375418287c9eba1e24c0
-      internalID: 1070750640
+      spriteID: b8a57feed4ed92c4298a72954c087d4a
+      internalID: -261930388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_7
+      name: aqua_barrer_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -284,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 281f746e9f933d04e98db20f0425906b
-      internalID: -1606584187
+      spriteID: b438447e5945e85479f61dc817ff281e
+      internalID: -59621584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_8
+      name: aqua_barrer_8
       rect:
         serializedVersion: 2
         x: 0
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b79c4a77605f0054c87e49bc96f4e581
-      internalID: 2105015996
+      spriteID: 57e6f8fa2b7b3204db023577927f6d00
+      internalID: -926117061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_9
+      name: aqua_barrer_9
       rect:
         serializedVersion: 2
         x: 256
@@ -326,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7da705d11cd124546bd2c5c2443cd4fc
-      internalID: -975923136
+      spriteID: c75cd1eee3d034a45b2a7f4c7ef78c09
+      internalID: -122329836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_10
+      name: aqua_barrer_10
       rect:
         serializedVersion: 2
         x: 512
@@ -347,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97082361cb4069a41bd51d3aaf9e66bf
-      internalID: -1460629986
+      spriteID: eb49e44e5e021e34a8643060132dffaa
+      internalID: -197501384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_11
+      name: aqua_barrer_11
       rect:
         serializedVersion: 2
         x: 768
@@ -368,14 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7456013f482429644a2884fc1291b6d2
-      internalID: 1635063658
+      spriteID: 9cb9ef6c70af52e49b2dccb9497893b7
+      internalID: -1380653053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_12
+      name: aqua_barrer_12
       rect:
         serializedVersion: 2
         x: 1024
@@ -389,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24a0c9c1cec071047ab0ee46d6161977
-      internalID: -631132376
+      spriteID: a5003056458212842896d976bed99bb3
+      internalID: -1745138185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_13
+      name: aqua_barrer_13
       rect:
         serializedVersion: 2
         x: 1280
@@ -410,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f1be1cb565fc9c4f9a025bf21c36127
-      internalID: 1336820984
+      spriteID: c10881b3d7a973447a61429ed0236623
+      internalID: 1140990655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aqua_dash_back_14
+      name: aqua_barrer_14
       rect:
         serializedVersion: 2
         x: 1536
@@ -431,218 +431,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46eb553ffb71cd443957c7a7660b18c1
-      internalID: 613072362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_15
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 1536
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3de94e833e5eb6842a8576d2733daba8
-      internalID: -480357095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_16
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ccf686f1dd313964d8f0e6ddeb6629cd
-      internalID: -1210477762
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_17
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe0d2bf6614b2534b9ebfb0b9a585194
-      internalID: 1045793931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_18
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f94b1749eaf08734ca6964f086953bd1
-      internalID: -22172071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_19
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 120244b131899074fa9341dd8cc8d941
-      internalID: 992018109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_20
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5b9c7e50fc3bca4a84a3b59b6ed46b1
-      internalID: 901518555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_21
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e90e2e00a1796641a5a305045bbc413
-      internalID: 1847073256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_22
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ac173a2afd24f84c99cca11ad4cefdf
-      internalID: -1962046346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_23
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8b339e55ac81924ca9e009ffd9f73f5
-      internalID: -647109324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: aqua_dash_back_24
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74b3812b46e3e954892d585cc5e3d5ba
-      internalID: 762053811
+      spriteID: f70016645c1c38d458f1b97a04caa5ef
+      internalID: 1158202943
       vertices: []
       indices: 
       edges: []
@@ -658,31 +448,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      aqua_dash_back_0: -1195581040
-      aqua_dash_back_1: 49045750
-      aqua_dash_back_10: -1460629986
-      aqua_dash_back_11: 1635063658
-      aqua_dash_back_12: -631132376
-      aqua_dash_back_13: 1336820984
-      aqua_dash_back_14: 613072362
-      aqua_dash_back_15: -480357095
-      aqua_dash_back_16: -1210477762
-      aqua_dash_back_17: 1045793931
-      aqua_dash_back_18: -22172071
-      aqua_dash_back_19: 992018109
-      aqua_dash_back_2: -2009991009
-      aqua_dash_back_20: 901518555
-      aqua_dash_back_21: 1847073256
-      aqua_dash_back_22: -1962046346
-      aqua_dash_back_23: -647109324
-      aqua_dash_back_24: 762053811
-      aqua_dash_back_3: 565621645
-      aqua_dash_back_4: 646937136
-      aqua_dash_back_5: 247018476
-      aqua_dash_back_6: 1070750640
-      aqua_dash_back_7: -1606584187
-      aqua_dash_back_8: 2105015996
-      aqua_dash_back_9: -975923136
+      aqua_barrer_0: -1669323700
+      aqua_barrer_1: -1634025153
+      aqua_barrer_10: -197501384
+      aqua_barrer_11: -1380653053
+      aqua_barrer_12: -1745138185
+      aqua_barrer_13: 1140990655
+      aqua_barrer_14: 1158202943
+      aqua_barrer_2: 861338580
+      aqua_barrer_3: 1407584826
+      aqua_barrer_4: -145724600
+      aqua_barrer_5: 1220728181
+      aqua_barrer_6: -261930388
+      aqua_barrer_7: -59621584
+      aqua_barrer_8: -926117061
+      aqua_barrer_9: -122329836
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

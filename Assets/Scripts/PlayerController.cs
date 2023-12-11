@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public float distanciaUmbral = 1.25f;
     public int saltosExtra;
     private int saltosExtraRestantes;
-    private bool puedeSaltar = true;
+    public bool puedeSaltar = true;
     public Vector2 pies;
 
     [Header("Colisiones")]
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public float altoCaja;
     public bool enSuelo = true;
     public LayerMask layerPiso;
+    public LayerMask layerPisoFalso;
 
     [Header("Dash")]
     public float velocidadDash = 15f;
@@ -61,19 +62,15 @@ public class PlayerController : MonoBehaviour
     {
         gravedadInicial = rigidBody.gravityScale;
     }
-
     void Update()
     {
-        AgarreSalto();
         Movimiento();
+        AgarreSalto();
         MejorarSalto();
         Saltar();
         NoCaer();
         DefinirSalto();
-        if (Input.GetButtonDown("Dash") && puedeDashear)
-        {
-            StartCoroutine(EjecutarDash());
-        }
+        PulsarDash();
     }
 
     //* -------------------------------------------------------------------------- */
@@ -124,7 +121,7 @@ public class PlayerController : MonoBehaviour
                 puedeSaltar = true;
                 animator.SetBool("jump", true);
                 EjecutarSaltoSuelo();
-            } 
+            }
             else
             {
                 if (saltosExtraRestantes > 0)
@@ -205,8 +202,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool GetSaltando() {
+        return !enSuelo;
+    }
+
     private bool EstoyCercaDelSuelo()
     {
+
         RaycastHit2D hit = Physics2D.Raycast(
             transform.position,
             Vector2.down,
@@ -230,6 +232,30 @@ public class PlayerController : MonoBehaviour
         caminar();
     }
 
+    public void SetPuedeMoverse(bool estado)
+    {
+        puedeMoverse = estado;
+        if (!estado) {
+            frenarSeco();
+        }
+    }
+
+    public void frenarSeco() {
+        rigidBody.velocity = Vector2.zero;
+    }
+
+    private bool VerMovimientoVertical()
+    {
+        if (rigidBody.velocity.x == 0 && Input.GetAxisRaw("Vertical") != 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void caminar()
     {
         if (puedeMoverse)
@@ -245,7 +271,7 @@ public class PlayerController : MonoBehaviour
     private void cambiarDireccion()
     {
         // * Verificamos que nos estemos moviendo
-        if (direccion != Vector2.zero)
+        if (direccion.x != 0 && VerMovimientoVertical())
         {
             if (!enSuelo)
             {
@@ -283,6 +309,14 @@ public class PlayerController : MonoBehaviour
     //* -------------------------------------------------------------------------- */
     //*                                   Dashes                                   */
     //* -------------------------------------------------------------------------- */
+
+    private void PulsarDash()
+    {
+        if (Input.GetButtonDown("Dash") && puedeDashear)
+        {
+            StartCoroutine(EjecutarDash());
+        }
+    }
 
     private IEnumerator EjecutarDash()
     {

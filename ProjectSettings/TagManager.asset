@@ -7,6 +7,9 @@ TagManager:
   - enemigo
   - suciedad
   - suciedadCamino
+  - jefe
+  - cinematicTrigger
+  - limitesCamara
   layers:
   - Default
   - TransparentFX

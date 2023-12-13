@@ -13,6 +13,9 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
 
     private float tiempoEnMovimiento;
 
+    [SerializeField]
+    private float[] probabilidadesEstado;
+
     public override void OnStateEnter(
         Animator animator,
         AnimatorStateInfo stateInfo,
@@ -51,36 +54,62 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         }
         else
         {
-            animator.SetTrigger("attack");
+            float estadoEscogido = Choose(probabilidadesEstado);
+            if (estadoEscogido == 0)
+            {
+                animator.SetTrigger("attack");
+            }
+            else if (estadoEscogido == 1)
+            {
+                animator.SetTrigger("rocket");
+            }
         }
+    }
+
+    private float Choose(float[] probs)
+    {
+        float total = 0;
+
+        foreach (float elem in probs)
+        {
+            total += elem;
+        }
+
+        float randomPoint = Random.value * total;
+
+        for (int i = 0; i < probs.Length; i++)
+        {
+            if (randomPoint < probs[i])
+            {
+                return i;
+            }
+            else
+            {
+                randomPoint -= probs[i];
+            }
+        }
+        return probs.Length - 1;
     }
 
     private void moverHaciaJugador()
     {
         bossController.MirarJugador();
 
-        // Calcula la dirección hacia el jugador
         float direccionHaciaJugador = bossController.jugador.position.x - rigidBody.position.x;
 
-        // Determina la velocidad en la dirección correcta
         Vector2 direccionMovimiento;
         if (direccionHaciaJugador < 0)
         {
-            // Jugador a la izquierda
             direccionMovimiento = new Vector2(-velocidadMovimiento, rigidBody.velocity.y);
         }
         else
         {
-            // Jugador a la derecha
             direccionMovimiento = new Vector2(velocidadMovimiento, rigidBody.velocity.y);
         }
-
-        // Aplica la velocidad al Rigidbody
         rigidBody.velocity = direccionMovimiento;
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
     }

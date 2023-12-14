@@ -6,7 +6,7 @@ using UnityEngine;
 public class JefeCamera : MonoBehaviour
 {
     private CinemachineTargetGroup cinemachineTargetGroup;
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
     private GameObject jugador;
     private GameObject[] jefes;
     public bool camaraJefe = false;
@@ -17,10 +17,10 @@ public class JefeCamera : MonoBehaviour
         jugador = GameObject.FindGameObjectWithTag("Player");
         jefes = GameObject.FindGameObjectsWithTag("jefe");
 
-        cinemachineTargetGroup.AddMember(jugador.transform, 1, 1);
+        cinemachineTargetGroup.AddMember(jugador.transform, 1, 3);
         foreach (GameObject jefe in jefes)
         {
-            cinemachineTargetGroup.AddMember(jefe.transform, 1, 1);
+            cinemachineTargetGroup.AddMember(jefe.transform, 1, 3);
         }
     }
 
@@ -32,6 +32,7 @@ public class JefeCamera : MonoBehaviour
         }
         else
         {
+            camaraJefe = false;
             cinemachineVirtualCamera.Follow = jugador.transform;
         }
     }

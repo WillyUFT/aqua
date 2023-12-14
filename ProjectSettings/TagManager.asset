@@ -10,6 +10,9 @@ TagManager:
   - jefe
   - cinematicTrigger
   - limitesCamara
+  - ataqueEnemigo
+  - proyectilEnemigo
+  - block
   layers:
   - Default
   - TransparentFX

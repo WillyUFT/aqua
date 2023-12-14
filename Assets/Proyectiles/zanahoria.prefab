@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1193465160615158}
   - component: {fileID: 8629579802253753091}
   - component: {fileID: 5662762308029165117}
+  - component: {fileID: 61303203036688638}
   m_Layer: 0
   m_Name: zanahoria
-  m_TagString: Untagged
+  m_TagString: proyectilEnemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +96,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432810261993505197}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -112,7 +113,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &8629579802253753091
 MonoBehaviour:
@@ -127,9 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 12
-  rotateSpeed: 250
-  tiempoParaSeguir: 1
+  speed: 7
+  rotateSpeed: 150
+  tiempoParaSeguir: 0.2
 --- !u!60 &5662762308029165117
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -199,3 +200,18 @@ PolygonCollider2D:
       - {x: -0.03, y: -1.04}
       - {x: 0.12, y: -1.2099999}
   m_UseDelaunayMesh: 0
+--- !u!114 &61303203036688638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432810261993505197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c243dc8b269784c8d8dc71316efe15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgAttack: 40
+  dmgTouch: 40
+  playerCombatController: {fileID: 0}

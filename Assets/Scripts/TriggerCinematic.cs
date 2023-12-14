@@ -8,8 +8,8 @@ public class TriggerCinematic : MonoBehaviour
     public Rigidbody2D jefeRigidBody;
     public GameObject jefe;
     public Animator jefeAnimator;
-    public CinemachineVirtualCamera jugadorCamara;
-    public CinemachineVirtualCamera jefeCamara;
+    [SerializeField] private CinemachineVirtualCamera jugadorCamara;
+    [SerializeField] private JefeCamera jefeCamera;
 
     void Start()
     {
@@ -28,6 +28,7 @@ public class TriggerCinematic : MonoBehaviour
     private void OnCinematicStopped(PlayableDirector playableDirector)
     {
         jefeAnimator.SetBool("nada", false);
+        jefeCamera.setCamaraJefe(true);
         Destroy(gameObject);
     }
 }

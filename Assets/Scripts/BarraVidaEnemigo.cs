@@ -15,7 +15,6 @@ public class BarraVidaEnemigo : MonoBehaviour
         slider.value = vidaActual / vidaMaxima;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.rotation = camara.transform.rotation;

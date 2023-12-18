@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
@@ -10,10 +9,15 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private BarraVidaAqua barraVidaAqua;
 
+    private bool saltando = false;
+
     [SerializeField]
     TimeStop timeStop;
-    private Rigidbody2D rigidBody;
-    private PlayerController playerController;
+    public Rigidbody2D rigidBody;
+    public PlayerController playerController;
+
+    [SerializeField]
+    private MenuGameOver menuGameOver;
 
     [Header("Daño")]
     [SerializeField]
@@ -53,6 +57,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Update()
     {
+        saltando = playerController.GetSaltando();
         pulsarAtaque();
         Bloquear();
     }
@@ -99,24 +104,27 @@ public class PlayerCombatController : MonoBehaviour
 
     public void Bloquear()
     {
-
-        if (Input.GetButtonDown("Bloqueo")) {
-            animator.SetTrigger("blockTrigger");
-        }
-
-        if (Input.GetButton("Bloqueo"))
+        if (!saltando)
         {
-            bloqueando = true;
-            playerController.SetPuedeMoverse(false);
-            animator.SetBool("block", true);
-            controladorBloqueo.SetActive(true);
-        }
-        else
-        {
-            playerController.SetPuedeMoverse(true);
-            animator.SetBool("block", false);
-            controladorBloqueo.SetActive(false);
-            bloqueando = false;
+            if (Input.GetButtonDown("Bloqueo"))
+            {
+                animator.SetTrigger("blockTrigger");
+            }
+
+            if (Input.GetButton("Bloqueo"))
+            {
+                bloqueando = true;
+                playerController.SetPuedeMoverse(false);
+                animator.SetBool("block", true);
+                controladorBloqueo.SetActive(true);
+            }
+            else if (Input.GetButtonUp("Bloqueo"))
+            {
+                playerController.SetPuedeMoverse(true);
+                animator.SetBool("block", false);
+                controladorBloqueo.SetActive(false);
+                bloqueando = false;
+            }
         }
     }
 
@@ -126,9 +134,12 @@ public class PlayerCombatController : MonoBehaviour
         {
             dmg = dmg / 2;
         }
+        else
+        {
+            KnockbackDmg();
+            timeStop.StopTime(0.05f, 10, 0.1f);
+        }
         barraVidaAqua.recibirDmg(dmg);
-        KnockbackDmg();
-        timeStop.StopTime(0.05f, 10, 0.1f);
     }
 
     private void OnDrawGizmos()
@@ -140,11 +151,23 @@ public class PlayerCombatController : MonoBehaviour
 
     public void KnockbackDmg()
     {
-        playerController.SetPuedeMoverse(false);
+        PerderControl();
+        animator.SetTrigger("hurt");
+
         float direccionKnockback = Mathf.Sign(transform.localScale.x);
         rigidBody.velocity = new Vector2(
-            velocidadKnockBack.x * direccionKnockback,
+            -velocidadKnockBack.x * direccionKnockback,
             rigidBody.position.y * velocidadKnockBack.y
         );
+    }
+
+    public void RecuperarControl()
+    {
+        playerController.SetPuedeMoverse(true);
+    }
+
+    public void PerderControl()
+    {
+        playerController.SetPuedeMoverse(false);
     }
 }

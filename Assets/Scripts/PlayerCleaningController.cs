@@ -170,6 +170,18 @@ public class PlayerCleaningController : MonoBehaviour
         Destroy(collider);
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("suciedad") && animacionActiva)
+        {
+            SuciedadController suciedad = other.GetComponent<SuciedadController>();
+            if (suciedad != null)
+            {
+                suciedad.RecibirDmg(limpiezaPorSegundoEscoba * Time.deltaTime);
+            }
+        }
+    }
+
     private void Sacudir()
     {
         if (Input.GetButtonDown("Limpiar"))
@@ -244,10 +256,7 @@ public class PlayerCleaningController : MonoBehaviour
 
     private void IniciarAnimacion(float tipoAnimacion)
     {
-        if (playerController != null)
-        {
-            playerController.SetPuedeMoverse(false);
-        }
+        playerController.SetPuedeMoverse(false);
         animacionActiva = true;
         animator.SetTrigger("clean");
         animator.SetFloat("tipoLimpieza", tipoAnimacion);

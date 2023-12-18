@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +7,7 @@ public class PlayerController : MonoBehaviour
     //* -------------------------------------------------------------------------- */
     //*                                  Variables                                 */
     //* -------------------------------------------------------------------------- */
-    private Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
 
     //^ ------------------------------- Movimiento ------------------------------- */
     [Header("Movimiento")]
@@ -62,6 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         gravedadInicial = rigidBody.gravityScale;
     }
+
     void Update()
     {
         Movimiento();
@@ -202,13 +201,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool GetSaltando() {
+    public bool GetSaltando()
+    {
         return !enSuelo;
     }
 
     private bool EstoyCercaDelSuelo()
     {
-
         RaycastHit2D hit = Physics2D.Raycast(
             transform.position,
             Vector2.down,
@@ -235,12 +234,15 @@ public class PlayerController : MonoBehaviour
     public void SetPuedeMoverse(bool estado)
     {
         puedeMoverse = estado;
-        if (!estado) {
+        Debug.Log("puedeMoverse: " + puedeMoverse);
+        if (!estado)
+        {
             frenarSeco();
         }
     }
 
-    public void frenarSeco() {
+    public void frenarSeco()
+    {
         rigidBody.velocity = Vector2.zero;
     }
 
@@ -270,39 +272,42 @@ public class PlayerController : MonoBehaviour
 
     private void cambiarDireccion()
     {
-        // * Verificamos que nos estemos moviendo
-        if (direccion.x != 0 && VerMovimientoVertical())
+        if (puedeMoverse)
         {
-            if (!enSuelo)
+            // * Verificamos que nos estemos moviendo
+            if (direccion.x != 0 && VerMovimientoVertical())
             {
-                animator.SetBool("jump", true);
+                if (!enSuelo)
+                {
+                    animator.SetBool("jump", true);
+                }
+                else
+                {
+                    animator.SetBool("walk", true);
+                }
+
+                // * Si nos movemos hacia la izquierda, pero el personaje mira hacia la derecha
+                if (direccion.x < 0 && transform.localScale.x > 0)
+                {
+                    transform.localScale = new Vector3(
+                        -transform.localScale.x,
+                        transform.localScale.y,
+                        transform.localScale.z
+                    );
+                }
+                else if (direccion.x > 0 && transform.localScale.x < 0)
+                {
+                    transform.localScale = new Vector3(
+                        Mathf.Abs(transform.localScale.x),
+                        transform.localScale.y,
+                        transform.localScale.z
+                    );
+                }
             }
             else
             {
-                animator.SetBool("walk", true);
+                animator.SetBool("walk", false);
             }
-
-            // * Si nos movemos hacia la izquierda, pero el personaje mira hacia la derecha
-            if (direccion.x < 0 && transform.localScale.x > 0)
-            {
-                transform.localScale = new Vector3(
-                    -transform.localScale.x,
-                    transform.localScale.y,
-                    transform.localScale.z
-                );
-            }
-            else if (direccion.x > 0 && transform.localScale.x < 0)
-            {
-                transform.localScale = new Vector3(
-                    Mathf.Abs(transform.localScale.x),
-                    transform.localScale.y,
-                    transform.localScale.z
-                );
-            }
-        }
-        else
-        {
-            animator.SetBool("walk", false);
         }
     }
 

@@ -10,6 +10,7 @@ public class TriggerCinematic : MonoBehaviour
     public Animator jefeAnimator;
     [SerializeField] private CinemachineVirtualCamera jugadorCamara;
     [SerializeField] private JefeCamera jefeCamera;
+    [SerializeField] private PlayerController playerController;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class TriggerCinematic : MonoBehaviour
     {
         jefeAnimator.SetBool("nada", false);
         jefeCamera.setCamaraJefe(true);
+        playerController.SetPuedeMoverse(true);
         Destroy(gameObject);
     }
 }

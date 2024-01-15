@@ -4,31 +4,24 @@ using UnityEngine;
 public class EnemyCombatController : MonoBehaviour
 {
     [Header("Cuerpo")]
-    [SerializeField]
-    private Rigidbody2D rigidBody;
+    [SerializeField] private Rigidbody2D rigidBody;
     private AtaqueEnemigo ataqueEnemigo;
 
     [Header("Vida")]
-    [SerializeField]
-    private float vidaMaxima;
+    [SerializeField] private float vidaMaxima;
     private float vidaActual;
 
-    [Header("Daño")]
-    [SerializeField]
-    private FlashEffect flashEffect;
+    [Header("Daño")] 
+    [SerializeField] private FlashEffect flashEffect;
 
-    [SerializeField]
-    private BarraVidaEnemigo barraVidaEnemigo;
+    [SerializeField] private BarraVidaEnemigo barraVidaEnemigo;
 
-    [SerializeField]
-    private Vector2 velocidadKnockBack;
+    [SerializeField] private Vector2 velocidadKnockBack;
 
-    [SerializeField]
-    private bool sePuedeMove = true;
+    [SerializeField] private bool sePuedeMove = true;
 
     [Header("Aqua")]
-    [SerializeField]
-    private PlayerCombatController playerCombatController;
+    [SerializeField] private PlayerCombatController playerCombatController;
 
     private void Awake()
     {
@@ -65,7 +58,7 @@ public class EnemyCombatController : MonoBehaviour
 
     private void Muerte()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

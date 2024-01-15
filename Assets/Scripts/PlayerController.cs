@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     TrailRenderer trailRenderer;
 
+    private Invulnerabilidad invulnerabilidad;
+
     //^ ------------------------------- Animaciones ------------------------------ */
     [Header("Animaciones")]
     public Animator animator;
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        invulnerabilidad = GetComponent<Invulnerabilidad>();
     }
 
     private void Start()
@@ -234,7 +237,6 @@ public class PlayerController : MonoBehaviour
     public void SetPuedeMoverse(bool estado)
     {
         puedeMoverse = estado;
-        Debug.Log("puedeMoverse: " + puedeMoverse);
         if (!estado)
         {
             frenarSeco();
@@ -358,6 +360,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(velocidadDash * Mathf.Sign(transform.localScale.x), 0);
         animator.SetTrigger("dash");
+        invulnerabilidad.VolverseInvulnerableHabilidad(tiempoDash);
         trailRenderer.emitting = true;
     }
 }

@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BarraVidaEnemigo : MonoBehaviour
 {
     [SerializeField] private Slider slider;
+
     [SerializeField] private Camera camara;
+ 
     [SerializeField] private Transform target;
+
     [SerializeField] private Vector3 offSet;
 
     public void ActualizarVida(float vidaActual, float vidaMaxima)

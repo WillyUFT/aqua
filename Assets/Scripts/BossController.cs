@@ -9,15 +9,13 @@ public class BossController : MonoBehaviour
 
     public Rigidbody2D rigidBody;
 
-    [Header("Movimiento")]
+    [Header("Movimiento")] 
     public Transform jugador;
 
-    [SerializeField]
-    public float distanciaUmbral;
+    [SerializeField] public float distanciaUmbral;
 
-    [Header("Vida")]
-    [SerializeField]
-    private float vida;
+    [Header("Vida")] 
+    [SerializeField] private float vida;
 
     private void Start()
     {
@@ -41,6 +39,20 @@ public class BossController : MonoBehaviour
                 transform.localScale.z
             );
         }
+    }
+
+    public void IniciarExitIdleState()
+    {
+        StartCoroutine(ExitIdleState());
+    }
+
+    private IEnumerator ExitIdleState()
+    {
+        float waitTime = UnityEngine.Random.Range(1.5f, 2.0f);
+        yield return new WaitForSeconds(waitTime);
+
+        // Cambia a otro estado aquí
+        animator.SetBool("walk", true);
     }
 
     void OnDrawGizmosSelected()

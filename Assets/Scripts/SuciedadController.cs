@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SuciedadController : MonoBehaviour
 {
-    [SerializeField]
-    public float vidaMaximaSuciedad;
+    [SerializeField] public float vidaMaximaSuciedad;
     public float vidaActualSuciedad;
 
     void Start()
@@ -16,7 +15,6 @@ public class SuciedadController : MonoBehaviour
     public void RecibirDmg(float dmg)
     {
         vidaActualSuciedad -= dmg;
-        Debug.Log("VidaActualSuciedad: " + vidaActualSuciedad);
         if (vidaActualSuciedad <= 0)
         {
             Muerte();

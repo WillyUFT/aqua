@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class JefeCaminarBehaviour : StateMachineBehaviour
@@ -5,16 +6,13 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
     private BossController bossController;
     private Rigidbody2D rigidBody;
 
-    [SerializeField]
-    private float velocidadMovimiento;
+    [SerializeField] private float velocidadMovimiento;
 
-    [SerializeField]
-    private float distanciaUmbral;
+    [SerializeField] private float distanciaUmbral;
 
     private float tiempoEnMovimiento;
 
-    [SerializeField]
-    private float[] probabilidadesEstado;
+    [SerializeField] private float[] probabilidadesEstado;
 
     public override void OnStateEnter(
         Animator animator,
@@ -22,7 +20,6 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         int layerIndex
     )
     {
-        tiempoEnMovimiento = Random.Range(1.5f, 2.0f);
         bossController = animator.GetComponent<BossController>();
         rigidBody = bossController.rigidBody;
         bossController.MirarJugador();
@@ -45,6 +42,7 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
 
             if (distanciaAlJugador <= bossController.distanciaUmbral)
             {
+                animator.SetBool("walk", true);
                 moverHaciaJugador();
             }
             else
@@ -54,6 +52,7 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         }
         else
         {
+            animator.SetBool("walk", false);
             float estadoEscogido = Choose(probabilidadesEstado);
             if (estadoEscogido == 0)
             {

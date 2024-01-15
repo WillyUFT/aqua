@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuGameOver : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject menuGameOver;
+    [SerializeField] private GameObject menuGameOver;
 
-    [SerializeField]
-    private BarraVidaAqua barraVidaAqua;
+    [SerializeField] private BarraVidaAqua barraVidaAqua;
 
     public void ActivarMenu()
     {

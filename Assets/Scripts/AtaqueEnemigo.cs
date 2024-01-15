@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class AtaqueEnemigo : MonoBehaviour
 {
-    [SerializeField]
-    public float dmgAttack;
+    [SerializeField] public float dmgAttack;
 
-    [SerializeField]
-    public float dmgTouch;
+    [SerializeField] public float dmgTouch;
 
     private PlayerCombatController playerCombatController;
 

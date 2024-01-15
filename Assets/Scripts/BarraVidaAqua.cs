@@ -8,21 +8,16 @@ using UnityEngine.UI;
 public class BarraVidaAqua : MonoBehaviour
 {
     [Header("Vida")]
-    [SerializeField]
-    private float vidaMaxima;
+    [SerializeField] private float vidaMaxima;
     public float vidaActual;
 
-    [SerializeField]
-    private Slider slider;
+    [SerializeField] private Slider slider;
 
-    [SerializeField]
-    private PlayerCombatController playerCombatController;
+    [SerializeField] private PlayerCombatController playerCombatController;
 
-    [SerializeField]
-    private PlayerController playerController;
+    [SerializeField] private PlayerController playerController;
 
-    [SerializeField]
-    private MenuGameOver menuGameOver;
+    [SerializeField] private MenuGameOver menuGameOver;
 
     void Start()
     {

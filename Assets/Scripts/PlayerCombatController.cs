@@ -9,6 +9,9 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private BarraVidaAqua barraVidaAqua;
 
+    [SerializeField]
+    private Invulnerabilidad invulnerabilidad;
+
     private bool saltando = false;
 
     [SerializeField]
@@ -22,6 +25,8 @@ public class PlayerCombatController : MonoBehaviour
     [Header("Daño")]
     [SerializeField]
     private Vector2 velocidadKnockBack;
+    private bool estaInvulnerable = false;
+
 
     [Header("Hitbox golpe normal")]
     public Transform controladorGolpe;
@@ -53,6 +58,7 @@ public class PlayerCombatController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
+        invulnerabilidad = GetComponent<Invulnerabilidad>();
     }
 
     private void Update()
@@ -66,9 +72,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         if (Input.GetButtonDown("Ataque") && puedeAtacar)
         {
-            Debug.Log("antes del coroutine: " + puedeAtacar);
             StartCoroutine(EjecutarAnimacionGolpe());
-            Debug.Log("después del coroutine: " + puedeAtacar);
         }
     }
 
@@ -130,16 +134,24 @@ public class PlayerCombatController : MonoBehaviour
 
     public void RecibirDmg(float dmg)
     {
-        if (bloqueando)
+        if (!estaInvulnerable)
         {
-            dmg = dmg / 2;
+            if (bloqueando)
+            {
+                dmg = dmg / 2;
+            }
+            else
+            {
+                KnockbackDmg();
+                invulnerabilidad.VolverseInvulnerable();
+                timeStop.StopTime(0.05f, 10, 0.1f);
+            }
+            barraVidaAqua.recibirDmg(dmg);
         }
-        else
-        {
-            KnockbackDmg();
-            timeStop.StopTime(0.05f, 10, 0.1f);
-        }
-        barraVidaAqua.recibirDmg(dmg);
+    }
+
+    public void SetInvulnerable(bool valor) {
+        estaInvulnerable = valor;
     }
 
     private void OnDrawGizmos()

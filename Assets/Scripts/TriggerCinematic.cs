@@ -21,6 +21,7 @@ public class TriggerCinematic : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            jefe.SetActive(true);
             jefeRigidBody.gravityScale = 1;
             playableDirector.Play();
         }
@@ -28,7 +29,6 @@ public class TriggerCinematic : MonoBehaviour
 
     private void OnCinematicStopped(PlayableDirector playableDirector)
     {
-        jefeAnimator.SetBool("nada", false);
         jefeCamera.setCamaraJefe(true);
         playerController.SetPuedeMoverse(true);
         Destroy(gameObject);

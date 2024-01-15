@@ -1,21 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZanahoriaPekoraController : MonoBehaviour
 {
     public Transform target;
 
-    [SerializeField]
-    public float speed = 12f;
+    [SerializeField] public float speed = 12f;
 
-    [SerializeField]
-    public float rotateSpeed = 170f;
+    [SerializeField] public float rotateSpeed = 170f;
     private Rigidbody2D rigidBody;
     private bool seguirJugador = false;
 
-    [SerializeField]
-    private float tiempoParaSeguir = 1f;
+    [SerializeField] private float tiempoParaSeguir = 1f;
 
     void Start()
     {
@@ -64,7 +60,6 @@ public class ZanahoriaPekoraController : MonoBehaviour
         }
         else if (!other.CompareTag("jefe") && !other.CompareTag("limitesCamara"))
         {
-            Debug.Log(other.name);
             ChocarConOtro();
         }
     }

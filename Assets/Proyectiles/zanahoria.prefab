@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8629579802253753091}
   - component: {fileID: 5662762308029165117}
   - component: {fileID: 61303203036688638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zanahoria
   m_TagString: proyectilEnemigo
   m_Icon: {fileID: 0}
@@ -212,6 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c243dc8b269784c8d8dc71316efe15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAttack: 40
-  dmgTouch: 40
-  playerCombatController: {fileID: 0}
+  dmgAttack: 5
+  dmgTouch: 5

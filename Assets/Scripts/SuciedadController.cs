@@ -25,4 +25,8 @@ public class SuciedadController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public float GetVida() {
+        return vidaActualSuciedad;
+    }
 }

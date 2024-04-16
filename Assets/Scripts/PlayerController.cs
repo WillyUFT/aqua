@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public float altoCaja;
     public bool enSuelo = true;
     public LayerMask layerPiso;
-    public LayerMask layerPisoFalso;
 
     [Header("Dash")]
     public float velocidadDash = 15f;

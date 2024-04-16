@@ -9,44 +9,58 @@ public class PlayerCleaningController : MonoBehaviour
     //* -------------------------------------------------------------------------- */
 
     [Header("Limpieza")]
-    [SerializeField] private Collider2D[] overlapEscoba;
+    [SerializeField]
+    private Collider2D[] overlapEscoba;
 
-    [SerializeField] private Collider2D[] overlapPlumero;
+    [SerializeField]
+    private Collider2D[] overlapPlumero;
 
     private bool puedeEliminarCaminoEscoba = false;
     private bool puedeEliminarCaminoPlumero = false;
 
     [Header("Animación")]
-    [SerializeField] Animator animator;
+    [SerializeField]
+    Animator animator;
 
-    [SerializeField] private bool animacionActiva = false;
+    [SerializeField]
+    private bool animacionActiva = false;
 
     [Header("Movimiento")]
-    [SerializeField] private PlayerController playerController;
+    [SerializeField]
+    private PlayerController playerController;
 
-    [SerializeField] private bool saltando = false;
+    [SerializeField]
+    private bool saltando = false;
 
     [Header("Activación de la animación")]
     private float tiempoDesdeUltimaPresion = 0f;
     private readonly float tiempoMaximoEntrePresiones = 0.5f;
 
     [Header("Hitbox de la escoba")]
-    [SerializeField] private float anchoHitBoxEscoba;
+    [SerializeField]
+    private float anchoHitBoxEscoba;
 
-    [SerializeField] private float largoHitboxEscoba;
+    [SerializeField]
+    private float largoHitboxEscoba;
 
-    [SerializeField] private float limpiezaPorSegundoEscoba;
+    [SerializeField]
+    private float limpiezaPorSegundoEscoba;
 
-    [SerializeField] public Vector2 escoba;
+    [SerializeField]
+    public Vector2 escoba;
 
     [Header("Hitbox del plumero")]
-    [SerializeField] private float anchoHitBoxPlumero;
+    [SerializeField]
+    private float anchoHitBoxPlumero;
 
-    [SerializeField] private float largoHitboxPlumero;
+    [SerializeField]
+    private float largoHitboxPlumero;
 
-    [SerializeField] private float limpiezaPorSegundoPlumero;
+    [SerializeField]
+    private float limpiezaPorSegundoPlumero;
 
-    [SerializeField] public Vector2 plumero;
+    [SerializeField]
+    public Vector2 plumero;
 
     void Start()
     {
@@ -68,6 +82,7 @@ public class PlayerCleaningController : MonoBehaviour
             Debug.LogError("Falta el playerController");
         }
         HandleLimpieza();
+        Debug.Log("Animación activa: " + animacionActiva);
     }
 
     private void OnDrawGizmos()
@@ -128,6 +143,10 @@ public class PlayerCleaningController : MonoBehaviour
             {
                 DetenerAnimacion();
             }
+            else
+            {
+                PuedeBarrerPisoFake();
+            }
         }
     }
 
@@ -145,7 +164,11 @@ public class PlayerCleaningController : MonoBehaviour
             if (collider.CompareTag("suciedadCamino"))
             {
                 puedeEliminarCaminoEscoba = true;
-                EliminarCaminoFake(collider.gameObject);
+                SuciedadController suciedad = collider.GetComponent<SuciedadController>();
+                if (suciedad != null)
+                {
+                    suciedad.RecibirDmg(limpiezaPorSegundoEscoba * Time.deltaTime);
+                }
             }
         }
     }
@@ -162,6 +185,7 @@ public class PlayerCleaningController : MonoBehaviour
             SuciedadController suciedad = other.GetComponent<SuciedadController>();
             if (suciedad != null)
             {
+                Debug.Log("HACIENDO DAÑO A LA SUCIEDAD");
                 suciedad.RecibirDmg(limpiezaPorSegundoEscoba * Time.deltaTime);
             }
         }

@@ -82,7 +82,6 @@ public class PlayerCleaningController : MonoBehaviour
             Debug.LogError("Falta el playerController");
         }
         HandleLimpieza();
-        Debug.Log("Animación activa: " + animacionActiva);
     }
 
     private void OnDrawGizmos()

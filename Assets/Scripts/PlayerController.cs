@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Salto")]
     public float fuerzaSaltoSuelo = 5f;
     public float fuerzaSaltoAire = 8f;
-    public float aceleracionCaida = 2.5f;
+    public float aceleracionCaida = 8f;
     public float aceleracionSalto = 2.0f;
     public float distanciaUmbral = 1.25f;
     public int saltosExtra;

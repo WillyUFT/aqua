@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class FlashEffect : MonoBehaviour
 {
-    [SerializeField] private Material flashMaterial;
+    [SerializeField]
+    private Material flashMaterial;
 
-    [SerializeField] private float duration;
+    [SerializeField]
+    private float duration;
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     private Coroutine flashRoutine;

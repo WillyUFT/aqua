@@ -27,7 +27,6 @@ public class PlayerCombatController : MonoBehaviour
     private Vector2 velocidadKnockBack;
     private bool estaInvulnerable = false;
 
-
     [Header("Hitbox golpe normal")]
     public Transform controladorGolpe;
     public float anchoHitBoxNormal;
@@ -95,12 +94,14 @@ public class PlayerCombatController : MonoBehaviour
 
         Collider2D[] objetos = Physics2D.OverlapBoxAll((Vector2)transform.position, tamanoCaja, 0);
         foreach (
-            var collider in from Collider2D collider in objetos
-            where collider.CompareTag("enemigo")
-            select collider
+            var enemyTransform in objetos
+                .Where(collider => collider.CompareTag("enemigo"))
+                .Select(collider => collider.transform)
         )
         {
-            collider.transform.GetComponent<EnemyCombatController>().RecibirDmg(dmgGolpeNormal);
+            enemyTransform
+                .GetComponent<EnemyDmg>()
+                .RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
         }
 
         cooldownAtaqueNormal = ultimoAtaqueNormal;
@@ -150,7 +151,8 @@ public class PlayerCombatController : MonoBehaviour
         }
     }
 
-    public void SetInvulnerable(bool valor) {
+    public void SetInvulnerable(bool valor)
+    {
         estaInvulnerable = valor;
     }
 

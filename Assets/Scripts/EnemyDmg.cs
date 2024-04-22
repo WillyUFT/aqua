@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDmg : MonoBehaviour, IDamageable
 {
@@ -21,6 +22,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
     [Header("Vida")]
     public bool vivo = true;
     public float vida;
+    private float vidaMaxima;
 
     [Header("Invencibilidad")]
     private float tiempoInvencibleTranscurrido = 0f;
@@ -46,6 +48,13 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         physicsCollider = GetComponent<Collider2D>();
         flashEffect = GetComponent<FlashEffect>();
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        vidaMaxima = Vida;
+        barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
+    }
+
+    public void Awake()
+    {
+        barraVidaEnemigo = GetComponentInChildren<BarraVidaEnemigo>();
     }
 
     void FixedUpdate()
@@ -71,6 +80,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             if (vida <= 0)
             {
                 Targeteable = false;
+                Destruir();
             }
         }
         get { return vida; }
@@ -130,7 +140,14 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
     public void Destruir()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(EjecutarDestruccion());
+
+    }
+
+    private IEnumerator EjecutarDestruccion()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 
     public void RecibirDmg(float dmg, Vector2 knockback)
@@ -143,6 +160,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             }
 
             Vida -= dmg;
+            barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
 
             float direccionKnockback = Mathf.Sign(transform.localScale.x);
 

@@ -51297,12 +51297,14 @@ MonoBehaviour:
   physicsCollider: {fileID: 0}
   vivo: 1
   vida: 100
+  vidaMaxima: 0
+  barraVidaEnemigo: {fileID: 0}
   esInvencible: 0
   esTargeteable: 0
   disableSimulation: 0
   perdidaControl: 1
   tiempoPerdidaControlTrasncurrido: 0
-  tiempoPerdidaControl: 1
+  tiempoPerdidaControl: 1.5
 --- !u!114 &2022359443
 MonoBehaviour:
   m_ObjectHideFlags: 0

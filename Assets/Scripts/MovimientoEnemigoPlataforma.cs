@@ -33,7 +33,7 @@ public class MovimientoEnemigoPlataforma : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!enemyDmg.Perdidacontrol)
+        if (!enemyDmg.Perdidacontrol && !enemyDmg.Golpeado)
         {
             RaycastHit2D informacionSuelo = Physics2D.Raycast(
                 controladorSuelo.position,

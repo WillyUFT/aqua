@@ -8,20 +8,25 @@ using UnityEngine.UI;
 public class BarraVidaAqua : MonoBehaviour
 {
     [Header("Vida")]
-    [SerializeField] private float vidaMaxima;
+    [SerializeField]
+    private float vidaMaxima;
     public float vidaActual;
 
-    [SerializeField] private Slider slider;
+    private Slider slider;
 
-    [SerializeField] private PlayerCombatController playerCombatController;
+    [SerializeField]
+    public PlayerCombatController playerCombatController;
 
-    [SerializeField] private PlayerController playerController;
+    [SerializeField]
+    public PlayerController playerController;
 
-    [SerializeField] private MenuGameOver menuGameOver;
+    // [SerializeField]
+    // public MenuGameOver menuGameOver;
 
     void Start()
     {
         vidaActual = vidaMaxima;
+        slider = GetComponent<Slider>();
     }
 
     public void ActualizarVida()
@@ -55,7 +60,7 @@ public class BarraVidaAqua : MonoBehaviour
     private IEnumerator ActivarMenuGameOver()
     {
         yield return new WaitForSeconds(1f);
-        menuGameOver.ActivarMenu();
+        // menuGameOver.ActivarMenu();
         SacarBarra();
     }
 

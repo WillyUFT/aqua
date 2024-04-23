@@ -24,6 +24,9 @@ public class EnemyDmg : MonoBehaviour, IDamageable
     public float vida;
     private float vidaMaxima;
 
+    [Header("Barra de vida")]
+    private BarraVidaEnemigo barraVidaEnemigo;
+
     [Header("Invencibilidad")]
     private float tiempoInvencibleTranscurrido = 0f;
     public bool esInvencible = false;
@@ -141,7 +144,6 @@ public class EnemyDmg : MonoBehaviour, IDamageable
     public void Destruir()
     {
         StartCoroutine(EjecutarDestruccion());
-
     }
 
     private IEnumerator EjecutarDestruccion()

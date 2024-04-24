@@ -11,8 +11,11 @@ public class BarraVidaAqua : MonoBehaviour
     [SerializeField]
     private float vidaMaxima;
     public float vidaActual;
-
     private Slider slider;
+
+    [Header("Imagen Aqutan")]
+    private Image imageIdle;
+    private Image imageDmg;
 
     [SerializeField]
     public PlayerCombatController playerCombatController;

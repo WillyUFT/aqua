@@ -92,16 +92,19 @@ public class PlayerCombatController : MonoBehaviour
     {
         Vector2 tamanoCaja = new Vector2(anchoHitBoxNormal, largoHitboxNormal);
 
-        Collider2D[] objetos = Physics2D.OverlapBoxAll((Vector2)transform.position, tamanoCaja, 0);
+        // Collider2D[] objetos = Physics2D.OverlapBoxAll((Vector2)transform.position, tamanoCaja, 0);
+        Collider2D[] objetos = Physics2D.OverlapBoxAll(
+            (Vector2)controladorGolpe.position,
+            tamanoCaja,
+            0
+        );
         foreach (
             var enemyTransform in objetos
                 .Where(collider => collider.CompareTag("enemigo"))
                 .Select(collider => collider.transform)
         )
         {
-            enemyTransform
-                .GetComponent<EnemyDmg>()
-                .RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
+            enemyTransform.GetComponent<EnemyDmg>().RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
         }
 
         cooldownAtaqueNormal = ultimoAtaqueNormal;

@@ -13,15 +13,14 @@ public class BarraVidaAqua : MonoBehaviour
     public float vidaActual;
     private Slider slider;
 
-    [Header("Imagen Aqutan")]
-    private Image imageIdle;
-    private Image imageDmg;
-
+    [Header("Jugador")]
     [SerializeField]
     public PlayerCombatController playerCombatController;
 
     [SerializeField]
     public PlayerController playerController;
+
+    private Portrait portraitController;
 
     // [SerializeField]
     // public MenuGameOver menuGameOver;
@@ -30,6 +29,7 @@ public class BarraVidaAqua : MonoBehaviour
     {
         vidaActual = vidaMaxima;
         slider = GetComponent<Slider>();
+        portraitController = GetComponentInChildren<Portrait>();
     }
 
     public void ActualizarVida()
@@ -43,12 +43,14 @@ public class BarraVidaAqua : MonoBehaviour
         {
             vidaActual -= dmg;
             ActualizarVida();
+            portraitController.ImagenDmg();
         }
         else
         {
             vidaActual = 0;
             ActualizarVida();
             Morir();
+            portraitController.ImagenMuerto();
         }
     }
 

@@ -164,14 +164,8 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             Vida -= dmg;
             barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
 
-            float direccionKnockback = Mathf.Sign(transform.localScale.x);
+            RealizarKnockback(knockback);
 
-            Vector2 knockbackDireccionado = new Vector2(
-                knockback.x * direccionKnockback,
-                knockback.y
-            );
-
-            rb.AddForce(knockbackDireccionado, ForceMode2D.Impulse);
             flashEffect.Flash();
 
             if (puedeVolverseInvencible)
@@ -196,6 +190,18 @@ public class EnemyDmg : MonoBehaviour, IDamageable
                 Invencible = true;
             }
         }
+    }
+
+    public void RealizarKnockback(Vector2 knockback)
+    {
+        float direccionKnockback = Mathf.Sign(transform.localScale.x);
+
+        Vector2 knockbackDireccionado = new Vector2(
+            knockback.x * direccionKnockback,
+            knockback.y
+        );
+
+        rb.AddForce(knockbackDireccionado, ForceMode2D.Impulse);
     }
 
     public void MirarJugador()

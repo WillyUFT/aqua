@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movimiento")]
     public float velocidadMovimiento = 10f;
     private Vector2 direccion;
-    private bool puedeMoverse = true;
+    public bool puedeMoverse = true;
 
     [Header("Salto")]
     public float fuerzaSaltoSuelo = 5f;

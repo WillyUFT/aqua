@@ -7,10 +7,8 @@ public class PlayerCombatController : MonoBehaviour
 {
     [Header("Aqua")]
     [SerializeField]
-    private BarraVidaAqua barraVidaAqua;
-
-    [SerializeField]
     private Invulnerabilidad invulnerabilidad;
+    public BarraVidaAqua barraVidaAqua;
 
     private bool saltando = false;
 
@@ -174,7 +172,7 @@ public class PlayerCombatController : MonoBehaviour
         float direccionKnockback = Mathf.Sign(transform.localScale.x);
         rigidBody.velocity = new Vector2(
             -velocidadKnockBack.x * direccionKnockback,
-            rigidBody.position.y * velocidadKnockBack.y
+            velocidadKnockBack.y
         );
     }
 

@@ -362,4 +362,15 @@ public class PlayerController : MonoBehaviour
         invulnerabilidad.VolverseInvulnerableHabilidad(tiempoDash);
         trailRenderer.emitting = true;
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "NPC")
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                other.gameObject.GetComponent<NpcController>().ActivateDialogue();
+            }
+        }
+    }
 }

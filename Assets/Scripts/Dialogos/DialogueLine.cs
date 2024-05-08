@@ -7,26 +7,38 @@ namespace DialogueSystem
     public class DialogueLine : DialogueBaseClass
     {
 
+
+        [Header("Texto")]
         private Text textHolder;
 
         [SerializeField] private string input;
-
-        [Header("Texto")]
         [SerializeField] private Color color;
         [SerializeField] private Font font;
         [SerializeField] private float velocidadTexto;
+        [SerializeField] private float delayEntreLineas;
+
+        [Header("Nombre del personaje")]
+        [SerializeField] private string nombrePersonaje;
+        [SerializeField] private Text nombrePersonajeHolder;
 
         [Header("Audio")]
         [SerializeField] private AudioClip sonido;
 
+        [Header("Imagenes Personaje")]
+        [SerializeField] private Sprite sprite;
+        [SerializeField] private Image image;
+
         private void Awake()
         {
             textHolder = GetComponent<Text>();
-            StartCoroutine(EscribirTexto(input, textHolder, color, font, velocidadTexto, sonido));
+            textHolder.text = "";
+            image.sprite = sprite;
+            image.preserveAspect = true;
         }
 
-
-
-
+        private void Start()
+        {
+            StartCoroutine(EscribirTexto(input, textHolder, color, font, velocidadTexto, sonido, nombrePersonaje, nombrePersonajeHolder));
+        }
     }
 }

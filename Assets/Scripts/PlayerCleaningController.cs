@@ -62,6 +62,8 @@ public class PlayerCleaningController : MonoBehaviour
     [SerializeField]
     public Vector2 plumero;
 
+    private bool puedeLimpiar = true;
+
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -95,20 +97,25 @@ public class PlayerCleaningController : MonoBehaviour
         Gizmos.DrawWireCube((Vector2)transform.position + plumero, tamanoPlumero);
     }
 
+    public void SetPuedeLimpiar(bool valor)
+    {
+        puedeLimpiar = valor;
+    }
+
     private void HandleLimpieza()
     {
         float inputVertical = Input.GetAxisRaw("Vertical");
         float inputHorizontal = Input.GetAxisRaw("Horizontal");
 
-        if (inputVertical < 0 && !saltando)
+        if (inputVertical < 0 && !saltando && puedeLimpiar)
         {
             Barrer();
         }
-        else if (inputHorizontal != 0 && !saltando)
+        else if (inputHorizontal != 0 && !saltando && puedeLimpiar)
         {
             Sacudir();
         }
-        else if (inputVertical > 0 && !saltando)
+        else if (inputVertical > 0 && !saltando && puedeLimpiar)
         {
             Ordenar();
         }

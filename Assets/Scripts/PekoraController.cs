@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PekoraController : MonoBehaviour
 {
+
+    [SerializeField] private bool esNpc;
+
     [SerializeField] private Rigidbody2D rigidBody;
 
     [SerializeField] private Animator animator;
@@ -15,6 +18,15 @@ public class PekoraController : MonoBehaviour
 
     [Header("Ataque misil")]
     [SerializeField] public GameObject misilPrefab;
+
+
+    public bool GetNpc() {
+        return esNpc;
+    }
+
+    public void SetNpc(bool valor) {
+        esNpc = valor;
+    }
 
     //* -------------------------------------------------------------------------- */
     //*                            Ataque con la espadaX                           */

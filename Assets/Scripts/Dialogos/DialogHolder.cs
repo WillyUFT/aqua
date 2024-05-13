@@ -15,17 +15,19 @@ namespace DialogueSystem
 
         private IEnumerator dialogueSequence()
         {
-            // barraVidaAqua.SetActive(false);
             gameObject.SetActive(true);
+            barraVidaAqua.SetActive(false);
             for (int i = 0; i < transform.childCount; i++)
             {
                 Deactivate();
                 transform.GetChild(i).gameObject.SetActive(true);
                 yield return new WaitUntil(() => transform.GetChild(i).GetComponent<DialogueLine>().finished);
             }
+
+            yield return new WaitForSeconds(0.2f);
+            Debug.Log("Dialogue finished, activating health bar.");
             gameObject.SetActive(false);
-            // yield return new WaitForSeconds(0.2f);
-            // barraVidaAqua.SetActive(true);
+            barraVidaAqua.SetActive(true);
         }
 
         private void Deactivate()

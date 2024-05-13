@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [Header("Animaciones")]
     public Animator animator;
 
+    private NpcController npcController;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour
         NoCaer();
         DefinirSalto();
         PulsarDash();
+        //inDialogue();
     }
 
     //* -------------------------------------------------------------------------- */
@@ -328,9 +331,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time - ultimoTiempoDash > cooldownDash)
         {
-            puedeMoverse = false;
-            puedeSaltar = false;
-            puedeDashear = false;
+            activarDesactivarMovimiento(false);
             rigidBody.gravityScale = 0;
             if (!enSuelo && contadorDashes < dashesPermitidos)
             {
@@ -347,12 +348,17 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForSeconds(tiempoDash);
 
-            puedeMoverse = true;
-            puedeSaltar = true;
-            puedeDashear = true;
+            activarDesactivarMovimiento(true);
             rigidBody.gravityScale = gravedadInicial;
             trailRenderer.emitting = false;
         }
+    }
+
+    public void activarDesactivarMovimiento(bool valor)
+    {
+        puedeMoverse = valor;
+        puedeSaltar = valor;
+        puedeDashear = valor;
     }
 
     private void Dashear()
@@ -363,14 +369,37 @@ public class PlayerController : MonoBehaviour
         trailRenderer.emitting = true;
     }
 
+
+    // * ---------------------- COMPORTAMIENTO CON NPCS ---------------------- */
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "NPC")
+        if (other.gameObject.tag == "npc")
         {
+            npcController = other.gameObject.GetComponent<NpcController>();
+
             if (Input.GetKey(KeyCode.E))
             {
-                other.gameObject.GetComponent<NpcController>().ActivateDialogue();
+                npcController.ActivateDialogue();
             }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        npcController = null;
+    }
+
+    private bool inDialogue()
+    {
+        if (npcController != null)
+        {
+            return npcController.DialogueActive();
+        }
+        else
+        {
+            puedeMoverse = true;
+            return false;
+        }
+    }
+
 }

@@ -49,6 +49,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private float anchoBloqueoHitbox;
     public bool bloqueando;
+    private bool puedeBloquear = true;
 
     public void Start()
     {
@@ -155,6 +156,16 @@ public class PlayerCombatController : MonoBehaviour
     public void SetInvulnerable(bool valor)
     {
         estaInvulnerable = valor;
+    }
+
+    public void SetPuedeAtacar(bool valor)
+    {
+        puedeAtacar = valor;
+    }
+
+    public void SetPuedeBloquear(bool valor)
+    {
+        puedeBloquear = valor;
     }
 
     private void OnDrawGizmos()

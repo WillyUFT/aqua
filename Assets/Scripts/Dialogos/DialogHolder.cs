@@ -7,10 +7,34 @@ namespace DialogueSystem
     {
 
         [SerializeField] private GameObject barraVidaAqua;
+        private IEnumerator dialogSeg;
+
+        private PlayerController playerController;
+        private PlayerCombatController playerCombatController;
+        private PlayerCleaningController playerCleaningController;
+
+        private void Start()
+        {
+            GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+            playerController = jugador.GetComponent<PlayerController>();
+            playerCombatController = jugador.GetComponent<PlayerCombatController>();
+            playerCleaningController = jugador.GetComponent<PlayerCleaningController>();
+        }
 
         private void Awake()
         {
-            StartCoroutine(dialogueSequence());
+            dialogSeg = dialogueSequence();
+            StartCoroutine(dialogSeg);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                Deactivate();
+                gameObject.SetActive(false);
+                StopCoroutine(dialogSeg);
+            }
         }
 
         private IEnumerator dialogueSequence()
@@ -30,12 +54,22 @@ namespace DialogueSystem
             barraVidaAqua.SetActive(true);
         }
 
+        private void DesactivarMovimiento(bool valor)
+        {
+            playerController.activarDesactivarMovimiento(valor);
+            playerController.SetSaltoBloqueado(!valor);
+            playerCombatController.SetPuedeAtacar(valor);
+            playerCombatController.SetPuedeBloquear(valor);
+            playerCleaningController.SetPuedeLimpiar(valor);
+        }
+
         private void Deactivate()
         {
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+            DesactivarMovimiento(true);
         }
 
     }

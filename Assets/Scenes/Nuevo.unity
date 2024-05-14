@@ -9462,7 +9462,7 @@ MonoBehaviour:
   input: "buenas noches tonto qlo tu me lansaste laaa sandia? \ndel tercer piso?"
   color: {r: 1, g: 1, b: 1, a: 1}
   font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  velocidadTexto: 0.03
+  velocidadTexto: 2
   delayEntreLineas: 0.75
   nombrePersonaje: Aqua
   nombrePersonajeHolder: {fileID: 2064093959}

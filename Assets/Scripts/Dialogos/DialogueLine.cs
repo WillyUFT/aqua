@@ -28,6 +28,8 @@ namespace DialogueSystem
         [SerializeField] private Sprite sprite;
         [SerializeField] private Image image;
 
+        private IEnumerator lineAppear;
+
         private void Awake()
         {
             textHolder = GetComponent<Text>();
@@ -38,7 +40,25 @@ namespace DialogueSystem
 
         private void Start()
         {
-            StartCoroutine(EscribirTexto(input, textHolder, color, font, velocidadTexto, sonido, nombrePersonaje, nombrePersonajeHolder));
+            lineAppear = EscribirTexto(input, textHolder, color, font, velocidadTexto, sonido, nombrePersonaje, nombrePersonajeHolder);
+            StartCoroutine(lineAppear);
         }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (textHolder.text != input)
+                {
+                    StopCoroutine(lineAppear);
+                    textHolder.text = input;
+                }
+                else
+                {
+                    finished = true;
+                }
+            }
+        }
+
     }
 }

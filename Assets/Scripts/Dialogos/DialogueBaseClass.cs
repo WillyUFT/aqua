@@ -8,7 +8,7 @@ namespace DialogueSystem
     public class DialogueBaseClass : MonoBehaviour
     {
 
-        public bool finished { get; private set; }
+        public bool finished { get; protected set; }
 
         // * Esto hace que el texto salga de a poquito, letra por letra
         protected IEnumerator EscribirTexto(

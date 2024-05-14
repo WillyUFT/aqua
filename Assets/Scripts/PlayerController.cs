@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public int saltosExtra;
     private int saltosExtraRestantes;
     public bool puedeSaltar = true;
+    private bool saltoBloqueado = false;
     public Vector2 pies;
 
     [Header("Colisiones")]
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     private void Saltar()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !saltoBloqueado)
         {
             if (enSuelo)
             {
@@ -357,8 +358,12 @@ public class PlayerController : MonoBehaviour
     public void activarDesactivarMovimiento(bool valor)
     {
         puedeMoverse = valor;
-        puedeSaltar = valor;
         puedeDashear = valor;
+    }
+
+    public void SetSaltoBloqueado(bool valor)
+    {
+        saltoBloqueado = valor;
     }
 
     private void Dashear()

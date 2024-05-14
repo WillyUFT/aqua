@@ -22,17 +22,18 @@ public class NpcController : MonoBehaviour
         dialogue.SetActive(true);
     }
 
-    public bool DialogueActive()
-    {
-        return dialogue.activeInHierarchy;
-    }
-
     public void DesactivarMovimiento(bool valor)
     {
         playerController.activarDesactivarMovimiento(valor);
+        playerController.SetSaltoBloqueado(!valor);
         playerCombatController.SetPuedeAtacar(valor);
         playerCombatController.SetPuedeBloquear(valor);
         playerCleaningController.SetPuedeLimpiar(valor);
+    }
+
+    public bool DialogueActive()
+    {
+        return dialogue.activeInHierarchy;
     }
 
 }

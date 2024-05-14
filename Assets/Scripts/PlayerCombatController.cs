@@ -111,7 +111,7 @@ public class PlayerCombatController : MonoBehaviour
 
     public void Bloquear()
     {
-        if (!saltando)
+        if (!saltando && puedeBloquear)
         {
             if (Input.GetButtonDown("Bloqueo"))
             {

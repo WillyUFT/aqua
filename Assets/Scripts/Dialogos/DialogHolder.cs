@@ -21,7 +21,7 @@ namespace DialogueSystem
             playerCleaningController = jugador.GetComponent<PlayerCleaningController>();
         }
 
-        private void Awake()
+        private void OnEnable()
         {
             dialogSeg = dialogueSequence();
             StartCoroutine(dialogSeg);
@@ -52,6 +52,7 @@ namespace DialogueSystem
             Debug.Log("Dialogue finished, activating health bar.");
             gameObject.SetActive(false);
             barraVidaAqua.SetActive(true);
+            DesactivarMovimiento(true);
         }
 
         private void DesactivarMovimiento(bool valor)
@@ -69,7 +70,7 @@ namespace DialogueSystem
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
-            DesactivarMovimiento(true);
+            //DesactivarMovimiento(true);
         }
 
     }

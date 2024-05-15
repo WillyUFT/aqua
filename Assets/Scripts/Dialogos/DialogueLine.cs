@@ -32,14 +32,13 @@ namespace DialogueSystem
 
         private void Awake()
         {
-            textHolder = GetComponent<Text>();
-            textHolder.text = "";
             image.sprite = sprite;
             image.preserveAspect = true;
         }
 
-        private void Start()
+        private void OnEnable()
         {
+            ResetLine();
             lineAppear = EscribirTexto(input, textHolder, color, font, velocidadTexto, sonido, nombrePersonaje, nombrePersonajeHolder);
             StartCoroutine(lineAppear);
         }
@@ -58,6 +57,13 @@ namespace DialogueSystem
                     finished = true;
                 }
             }
+        }
+
+        private void ResetLine()
+        {
+            textHolder = GetComponent<Text>();
+            textHolder.text = "";
+            finished = false;
         }
 
     }

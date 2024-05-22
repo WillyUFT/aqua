@@ -5,7 +5,7 @@ using UnityEngine;
 public class PekoraController : MonoBehaviour
 {
 
-    [SerializeField] private bool esNpc;
+    [SerializeField] private bool esNpc = true;
 
     [SerializeField] private Rigidbody2D rigidBody;
 
@@ -20,12 +20,19 @@ public class PekoraController : MonoBehaviour
     [SerializeField] public GameObject misilPrefab;
 
 
-    public bool GetNpc() {
+    public bool GetNpc()
+    {
         return esNpc;
     }
 
-    public void SetNpc(bool valor) {
+    public void SetNpc(bool valor)
+    {
         esNpc = valor;
+        BossController bossController = gameObject.GetComponent<BossController>();
+        if (bossController != null && !valor)
+        {
+            bossController.IniciarExitIdleState();
+        }
     }
 
     //* -------------------------------------------------------------------------- */
@@ -43,6 +50,7 @@ public class PekoraController : MonoBehaviour
     {
         yield return new WaitForSeconds(duracionDash);
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        // animator.SetTrigger("idle");
     }
 
     //* -------------------------------------------------------------------------- */
@@ -56,5 +64,6 @@ public class PekoraController : MonoBehaviour
             anguloAleatorioEnZ = -anguloAleatorioEnZ;
         }
         Instantiate(misilPrefab, transform.position, Quaternion.Euler(0, 0, anguloAleatorioEnZ));
+        // animator.SetTrigger("idle");
     }
 }

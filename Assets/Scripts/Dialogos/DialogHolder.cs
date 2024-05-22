@@ -12,6 +12,8 @@ namespace DialogueSystem
         private PlayerController playerController;
         private PlayerCombatController playerCombatController;
         private PlayerCleaningController playerCleaningController;
+        [SerializeField]
+        private PekoraController pekoraController;
 
         private void Start()
         {
@@ -49,10 +51,10 @@ namespace DialogueSystem
             }
 
             yield return new WaitForSeconds(0.2f);
-            Debug.Log("Dialogue finished, activating health bar.");
             gameObject.SetActive(false);
             barraVidaAqua.SetActive(true);
             DesactivarMovimiento(true);
+            pekoraController.SetNpc(false);
         }
 
         private void DesactivarMovimiento(bool valor)
@@ -70,7 +72,6 @@ namespace DialogueSystem
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
-            //DesactivarMovimiento(true);
         }
 
     }

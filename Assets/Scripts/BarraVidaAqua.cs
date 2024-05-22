@@ -22,9 +22,6 @@ public class BarraVidaAqua : MonoBehaviour
 
     private Portrait portraitController;
 
-    // [SerializeField]
-    // public MenuGameOver menuGameOver;
-
     void Start()
     {
         vidaActual = vidaMaxima;

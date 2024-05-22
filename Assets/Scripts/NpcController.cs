@@ -6,6 +6,8 @@ public class NpcController : MonoBehaviour
     private PlayerController playerController;
     private PlayerCombatController playerCombatController;
     private PlayerCleaningController playerCleaningController;
+    [SerializeField]
+    private PekoraController pekoraController;
 
     private void Start()
     {
@@ -17,9 +19,12 @@ public class NpcController : MonoBehaviour
 
     public void ActivateDialogue()
     {
-        DesactivarMovimiento(false);
-        playerController.frenarSeco();
-        dialogue.SetActive(true);
+        if (pekoraController.GetNpc())
+        {
+            DesactivarMovimiento(false);
+            playerController.frenarSeco();
+            dialogue.SetActive(true);
+        }
     }
 
     public void DesactivarMovimiento(bool valor)

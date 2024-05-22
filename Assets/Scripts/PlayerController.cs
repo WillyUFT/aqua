@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -382,6 +383,22 @@ public class PlayerController : MonoBehaviour
         {
             npcController = other.gameObject.GetComponent<NpcController>();
 
+            // * Acá va
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("npcButton");
+
+            foreach (GameObject button in gameObjects)
+            {
+                PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
+                if (pekora.GetNpc())
+                {
+                    button.GetComponent<Image>().enabled = true;
+                }
+                else
+                {
+                    button.GetComponent<Image>().enabled = false;
+                }
+            }
+
             if (Input.GetKey(KeyCode.E))
             {
                 npcController.ActivateDialogue();
@@ -392,6 +409,18 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         npcController = null;
+
+        if (other.gameObject.tag == "npc")
+        {
+            // Desactivar los botones cuando el jugador sale del área
+            GameObject[] npcButtons = GameObject.FindGameObjectsWithTag("npcButton");
+
+            foreach (GameObject button in npcButtons)
+            {
+                button.GetComponent<Image>().enabled = false;
+            }
+        }
+
     }
 
     private bool inDialogue()

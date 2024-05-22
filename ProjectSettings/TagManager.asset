@@ -14,6 +14,7 @@ TagManager:
   - proyectilEnemigo
   - block
   - npc
+  - npcButton
   layers:
   - Default
   - TransparentFX

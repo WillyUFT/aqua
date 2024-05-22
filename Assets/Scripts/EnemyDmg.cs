@@ -52,7 +52,10 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         flashEffect = GetComponent<FlashEffect>();
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         vidaMaxima = Vida;
-        barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
+        if (gameObject.tag != "jefe")
+        {
+            barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
+        }
     }
 
     public void Awake()
@@ -175,7 +178,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
             // * Perdemos el control
             Perdidacontrol = true;
-            StartCoroutine(RecuperarControl(tiempoPerdidaControl));
+            StartCoroutine(RecuperarControl(0.1f));
         }
     }
 
@@ -185,10 +188,15 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         {
             Vida -= dmg;
 
-            if (puedeVolverseInvencible)
-            {
-                Invencible = true;
-            }
+            // if (puedeVolverseInvencible)
+            // {
+            //     Invencible = true;
+            // }
+
+            // // *Perdemos el control
+            // Perdidacontrol = true;
+            // StartCoroutine(RecuperarControl(0.1f));
+            // StartCoroutine(RecuperarControl(tiempoPerdidaControl));
         }
     }
 

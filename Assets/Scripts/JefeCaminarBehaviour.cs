@@ -31,38 +31,41 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         int layerIndex
     )
     {
-        tiempoEnMovimiento -= Time.deltaTime;
 
-        if (tiempoEnMovimiento > 0)
-        {
-            float distanciaAlJugador = Vector2.Distance(
-                bossController.jugador.position,
-                rigidBody.position
-            );
 
-            if (distanciaAlJugador <= bossController.distanciaUmbral)
-            {
-                animator.SetBool("walk", true);
-                moverHaciaJugador();
-            }
-            else
-            {
-                rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-            }
-        }
-        else
-        {
-            animator.SetBool("walk", false);
-            float estadoEscogido = Choose(probabilidadesEstado);
-            if (estadoEscogido == 0)
-            {
-                animator.SetTrigger("attack");
-            }
-            else if (estadoEscogido == 1)
-            {
-                animator.SetTrigger("rocket");
-            }
-        }
+
+        // tiempoEnMovimiento -= Time.deltaTime;
+
+        // if (tiempoEnMovimiento > 0)
+        // {
+        //     float distanciaAlJugador = Vector2.Distance(
+        //         bossController.jugador.position,
+        //         rigidBody.position
+        //     );
+
+        //     if (distanciaAlJugador <= bossController.distanciaUmbral)
+        //     {
+        //         animator.SetBool("walk", true);
+        //         moverHaciaJugador();
+        //     }
+        //     else
+        //     {
+        //         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        //     }
+        // }
+        // else
+        // {
+        //     animator.SetBool("walk", false);
+        //     float estadoEscogido = Choose(probabilidadesEstado);
+        //     if (estadoEscogido == 0)
+        //     {
+        //         animator.SetTrigger("attack");
+        //     }
+        //     else if (estadoEscogido == 1)
+        //     {
+        //         animator.SetTrigger("rocket");
+        //     }
+        // }
     }
 
     private float Choose(float[] probs)

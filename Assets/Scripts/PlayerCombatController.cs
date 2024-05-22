@@ -97,13 +97,35 @@ public class PlayerCombatController : MonoBehaviour
             tamanoCaja,
             0
         );
+
+        // foreach (
+        //     var enemyTransform in objetos
+        //         .Where(collider => collider.CompareTag("enemigo"))
+        //         .Select(collider => collider.transform)
+        // )
+        // {
+        //     enemyTransform.GetComponent<EnemyDmg>().RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
+        // }
+
         foreach (
             var enemyTransform in objetos
-                .Where(collider => collider.CompareTag("enemigo"))
-                .Select(collider => collider.transform)
         )
         {
-            enemyTransform.GetComponent<EnemyDmg>().RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
+            var enemyDmg = enemyTransform.GetComponent<EnemyDmg>();
+
+            if (enemyTransform.CompareTag("enemigo"))
+            {
+                enemyDmg.RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
+            }
+            else if (enemyTransform.CompareTag("jefe"))
+            {
+                PekoraController pekoraController = enemyTransform.GetComponent<PekoraController>();
+                if (pekoraController != null && !pekoraController.GetNpc())
+                {
+                    enemyDmg.RecibirDmg(dmgGolpeNormal);
+                }
+            }
+
         }
 
         cooldownAtaqueNormal = ultimoAtaqueNormal;

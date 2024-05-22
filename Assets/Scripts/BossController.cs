@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    public Animator animator;
+    private Animator animator;
 
     public Rigidbody2D rigidBody;
 
-    [Header("Movimiento")] 
+    [Header("Movimiento")]
     public Transform jugador;
 
     [SerializeField] public float distanciaUmbral;
 
-    [Header("Vida")] 
+    [Header("Vida")]
     [SerializeField] private float vida;
 
     private void Start()
@@ -52,7 +52,7 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         // Cambia a otro estado aquí
-        animator.SetBool("walk", true);
+        animator.SetBool("nada", false);
     }
 
     void OnDrawGizmosSelected()

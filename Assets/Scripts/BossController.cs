@@ -52,7 +52,7 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         // Cambia a otro estado aquí
-        animator.SetBool("nada", false);
+        animator.SetBool("idle", true);
     }
 
     void OnDrawGizmosSelected()

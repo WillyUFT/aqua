@@ -72,9 +72,15 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: distanciaJugador
+    m_EventTreshold: 6
   - m_ConditionMode: 1
     m_ConditionEvent: rocket
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: distanciaJugador
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9056471783293500872}
   m_Solo: 0
@@ -123,11 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f76dea92cf570b4d83e537f1a41fb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 8
+  velocidadMovimiento: 3
   distanciaUmbral: 6
   probabilidadesEstado:
-  - 40
-  - 60
+  - 0
+  - 100
 --- !u!1107 &-4092483586362451716
 AnimatorStateMachine:
   serializedVersion: 6
@@ -236,19 +242,7 @@ AnimatorController:
   m_Name: PekoraAnimationController
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: attack
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: attackDash
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: rocket
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -268,6 +262,24 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: idle
     m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: distanciaJugador
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: attack
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: rocket
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -410,6 +422,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: distanciaJugador
+    m_EventTreshold: 4
   - m_ConditionMode: 1
     m_ConditionEvent: attack
     m_EventTreshold: 0

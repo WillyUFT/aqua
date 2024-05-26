@@ -15,6 +15,7 @@ TagManager:
   - block
   - npc
   - npcButton
+  - mapa
   layers:
   - Default
   - TransparentFX

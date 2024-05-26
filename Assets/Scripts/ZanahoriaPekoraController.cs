@@ -58,9 +58,9 @@ public class ZanahoriaPekoraController : MonoBehaviour
         {
             ChocarConJugador();
         }
-        else if (!other.CompareTag("jefe") && !other.CompareTag("limitesCamara"))
+        else if (other.CompareTag("mapa") || other.CompareTag("suciedadCamino"))
         {
-            ChocarConOtro();
+            Destroy(gameObject);
         }
     }
 
@@ -70,8 +70,9 @@ public class ZanahoriaPekoraController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void ChocarConOtro()
+    void ChocarConOtro(Collider2D other)
     {
+        Debug.Log("El misil ha chocado con el objeto: " + other.tag);
         Debug.Log("El misil ha chocado con algo que no es el jugador ni el jefe");
         Destroy(gameObject);
     }

@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BarraVidaBoss : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Slider slider;
+
+    public void ActualizarVida(float vidaActual, float vidaMaxima)
     {
-        
+        slider.value = vidaActual / vidaMaxima;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 }

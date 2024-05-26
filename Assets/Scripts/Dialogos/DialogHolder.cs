@@ -14,6 +14,7 @@ namespace DialogueSystem
         private PlayerCleaningController playerCleaningController;
         [SerializeField]
         private PekoraController pekoraController;
+        [SerializeField] private GameObject limitePeleaPekora;
 
         private void Start()
         {
@@ -55,6 +56,7 @@ namespace DialogueSystem
             barraVidaAqua.SetActive(true);
             DesactivarMovimiento(true);
             pekoraController.SetNpc(false);
+            limitePeleaPekora.SetActive(true);
         }
 
         private void DesactivarMovimiento(bool valor)

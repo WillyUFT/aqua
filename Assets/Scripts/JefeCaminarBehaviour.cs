@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data.Common;
 using UnityEngine;
 
 public class JefeCaminarBehaviour : StateMachineBehaviour
@@ -6,14 +7,18 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
     private BossController bossController;
     private Rigidbody2D rigidBody;
 
+    bool triggerCambioDireccion = false;
+
     [SerializeField] private float velocidadMovimiento;
 
     [SerializeField] private float distanciaUmbral;
 
     private float tiempoEnMovimiento;
 
+
     [SerializeField] private float[] probabilidadesEstado;
 
+    private PekoraController pekoraController;
     public override void OnStateEnter(
         Animator animator,
         AnimatorStateInfo stateInfo,
@@ -21,8 +26,10 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
     )
     {
         bossController = animator.GetComponent<BossController>();
+        pekoraController = animator.GetComponent<PekoraController>();
         rigidBody = bossController.rigidBody;
         bossController.MirarJugador();
+
     }
 
     public override void OnStateUpdate(
@@ -31,84 +38,46 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         int layerIndex
     )
     {
+        moverHaciaJugador();
+        activarAtaques(animator);
 
-
-
-        // tiempoEnMovimiento -= Time.deltaTime;
-
-        // if (tiempoEnMovimiento > 0)
-        // {
-        //     float distanciaAlJugador = Vector2.Distance(
-        //         bossController.jugador.position,
-        //         rigidBody.position
-        //     );
-
-        //     if (distanciaAlJugador <= bossController.distanciaUmbral)
-        //     {
-        //         animator.SetBool("walk", true);
-        //         moverHaciaJugador();
-        //     }
-        //     else
-        //     {
-        //         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-        //     }
-        // }
-        // else
-        // {
-        //     animator.SetBool("walk", false);
-        //     float estadoEscogido = Choose(probabilidadesEstado);
-        //     if (estadoEscogido == 0)
-        //     {
-        //         animator.SetTrigger("attack");
-        //     }
-        //     else if (estadoEscogido == 1)
-        //     {
-        //         animator.SetTrigger("rocket");
-        //     }
-        // }
     }
 
-    private float Choose(float[] probs)
+    private void activarAtaques(Animator animator)
     {
-        float total = 0;
 
-        foreach (float elem in probs)
+        float distanciaJugador = bossController.getDistanciaJugador();
+
+        if (distanciaJugador >= 6 && distanciaJugador <= 7 && pekoraController.getVecesAtaqueCohete() < 3)
         {
-            total += elem;
+            animator.SetBool("rocket", true);
+        }
+        else if (distanciaJugador <= 4 && pekoraController.getVecesAtaqueEspada() < 3)
+        {
+            animator.SetBool("attack", true);
         }
 
-        float randomPoint = Random.value * total;
-
-        for (int i = 0; i < probs.Length; i++)
-        {
-            if (randomPoint < probs[i])
-            {
-                return i;
-            }
-            else
-            {
-                randomPoint -= probs[i];
-            }
-        }
-        return probs.Length - 1;
     }
 
     private void moverHaciaJugador()
     {
-        bossController.MirarJugador();
-
-        float direccionHaciaJugador = bossController.jugador.position.x - rigidBody.position.x;
-
-        Vector2 direccionMovimiento;
-        if (direccionHaciaJugador < 0)
+        if (bossController.getPuedeMoverse())
         {
-            direccionMovimiento = new Vector2(-velocidadMovimiento, rigidBody.velocity.y);
+            bossController.MirarJugador();
+
+            float direccionHaciaJugador = bossController.jugador.position.x - rigidBody.position.x;
+
+            Vector2 direccionMovimiento;
+            if (direccionHaciaJugador < 0)
+            {
+                direccionMovimiento = new Vector2(-velocidadMovimiento, rigidBody.velocity.y);
+            }
+            else
+            {
+                direccionMovimiento = new Vector2(velocidadMovimiento, rigidBody.velocity.y);
+            }
+            rigidBody.velocity = direccionMovimiento;
         }
-        else
-        {
-            direccionMovimiento = new Vector2(velocidadMovimiento, rigidBody.velocity.y);
-        }
-        rigidBody.velocity = direccionMovimiento;
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -26,6 +26,9 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
     [Header("Barra de vida")]
     private BarraVidaEnemigo barraVidaEnemigo;
+    [Header("Barra de vida Jefe")]
+    [SerializeField]
+    private BarraVidaBoss barraVidaBoss;
 
     [Header("Invencibilidad")]
     private float tiempoInvencibleTranscurrido = 0f;
@@ -55,6 +58,10 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         if (gameObject.tag != "jefe")
         {
             barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
+        }
+        else
+        {
+            barraVidaBoss.ActualizarVida(vida, vidaMaxima);
         }
     }
 
@@ -188,15 +195,9 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         {
             Vida -= dmg;
 
-            // if (puedeVolverseInvencible)
-            // {
-            //     Invencible = true;
-            // }
+            barraVidaBoss.ActualizarVida(Vida, vidaMaxima);
 
-            // // *Perdemos el control
-            // Perdidacontrol = true;
-            // StartCoroutine(RecuperarControl(0.1f));
-            // StartCoroutine(RecuperarControl(tiempoPerdidaControl));
+
         }
     }
 

@@ -17,11 +17,35 @@ public class BossController : MonoBehaviour
     [Header("Vida")]
     [SerializeField] private float vida;
 
+    private bool puedeMoverse = true;
+    private float distanciaJugador;
+
+    public void setPuedeMoverse(bool valor)
+    {
+        puedeMoverse = valor;
+    }
+
+    public bool getPuedeMoverse()
+    {
+        return puedeMoverse;
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        distanciaJugador = Vector2.Distance(transform.position, jugador.position);
+        animator.SetFloat("distanciaJugador", distanciaJugador);
+    }
+
+    public float getDistanciaJugador()
+    {
+        return distanciaJugador;
     }
 
     public void MirarJugador()
@@ -52,7 +76,8 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         // Cambia a otro estado aquí
-        animator.SetBool("idle", true);
+        // animator.SetBool("idle", true);
+        animator.SetTrigger("idle");
     }
 
     void OnDrawGizmosSelected()

@@ -55,19 +55,23 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         flashEffect = GetComponent<FlashEffect>();
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         vidaMaxima = Vida;
-        if (gameObject.tag != "jefe")
+        if (gameObject.tag != "jefe" && gameObject.tag != "npc")
         {
             barraVidaEnemigo.ActualizarVida(Vida, vidaMaxima);
         }
-        else
+        else if (gameObject.tag == "jefe" || gameObject.tag == "npc")
         {
-            barraVidaBoss.ActualizarVida(vida, vidaMaxima);
+            barraVidaBoss.SetVidaInicial(vidaMaxima);
         }
     }
 
     public void Awake()
     {
-        barraVidaEnemigo = GetComponentInChildren<BarraVidaEnemigo>();
+        if (gameObject.tag != "jefe")
+        {
+            barraVidaEnemigo = GetComponentInChildren<BarraVidaEnemigo>();
+
+        }
     }
 
     void FixedUpdate()
@@ -195,8 +199,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         {
             Vida -= dmg;
 
-            barraVidaBoss.ActualizarVida(Vida, vidaMaxima);
-
+            barraVidaBoss.recibirDmg(dmg);
 
         }
     }

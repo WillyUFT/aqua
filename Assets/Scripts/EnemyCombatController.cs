@@ -11,7 +11,7 @@ public class EnemyCombatController : MonoBehaviour
     [SerializeField] private float vidaMaxima;
     private float vidaActual;
 
-    [Header("Daño")] 
+    [Header("Daño")]
     [SerializeField] private FlashEffect flashEffect;
 
     [SerializeField] private BarraVidaEnemigo barraVidaEnemigo;
@@ -66,6 +66,7 @@ public class EnemyCombatController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerCombatController.RecibirDmg(ataqueEnemigo.getDmgTouch());
+
         }
     }
 }

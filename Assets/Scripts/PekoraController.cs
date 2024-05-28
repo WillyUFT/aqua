@@ -7,9 +7,9 @@ public class PekoraController : MonoBehaviour
 
     [SerializeField] private bool esNpc = true;
 
-    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] public Rigidbody2D rigidBody;
 
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
 
     [Header("Ataque espada")]
     [SerializeField] private float fuerzaDash;

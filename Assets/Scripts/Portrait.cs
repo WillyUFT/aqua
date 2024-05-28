@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Portrait : MonoBehaviour
 {
-    [Header("Imagen Aqutan")]
+    [Header("Imagen")]
     private Image imagen;
 
     [SerializeField]

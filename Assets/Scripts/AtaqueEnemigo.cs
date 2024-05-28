@@ -33,7 +33,11 @@ public class AtaqueEnemigo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("block") || other.gameObject.CompareTag("Player"))
         {
-            playerCombatController.RecibirDmg(dmgAttack);
+            if (gameObject.tag != "npc")
+            {
+                playerCombatController.RecibirDmg(dmgAttack);
+            }
+
         }
     }
 }

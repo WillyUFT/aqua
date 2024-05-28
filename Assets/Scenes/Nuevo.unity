@@ -2540,6 +2540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aqutan
       objectReference: {fileID: 0}
+    - target: {fileID: 8032555529669944784, guid: 6c6e8361b15694574b0c82a75f6b864a, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3936,7 +3940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       propertyPath: m_IsActive
@@ -3944,7 +3948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       propertyPath: m_TagString
-      value: jefe
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 6720637661455170280, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4008,7 +4012,7 @@ PrefabInstance:
       addedObject: {fileID: 1148205953}
     - targetCorrespondingSourceObject: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1148205957}
+      addedObject: {fileID: 1148205959}
     - targetCorrespondingSourceObject: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1148205958}
@@ -4526,7 +4530,7 @@ GameObject:
   - component: {fileID: 689702750}
   - component: {fileID: 689702749}
   - component: {fileID: 689702751}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: E
   m_TagString: npcButton
   m_Icon: {fileID: 0}
@@ -7883,26 +7887,13 @@ MonoBehaviour:
   physicsCollider: {fileID: 0}
   vivo: 1
   vida: 500
-  barraVidaBoss: {fileID: 1148205957}
+  barraVidaBoss: {fileID: 1340084263}
   esInvencible: 0
   esTargeteable: 0
   disableSimulation: 0
   perdidaControl: 0
   tiempoPerdidaControlTrasncurrido: 0
   tiempoPerdidaControl: 0
---- !u!114 &1148205957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148205938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54893947cc070bf4482a2ee5f756d3de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1340084262}
 --- !u!114 &1148205958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7917,6 +7908,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmgAttack: 30
   dmgTouch: 15
+--- !u!114 &1148205959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148205938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab6dc757de6ce646ab148f079b72b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 61951ce873b396a47a31785d0e28b8f3, type: 2}
+  duration: 0.1
 --- !u!1 &1154941137
 GameObject:
   m_ObjectHideFlags: 0
@@ -7928,7 +7933,7 @@ GameObject:
   - component: {fileID: 1154941138}
   - component: {fileID: 1154941140}
   - component: {fileID: 1154941139}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PekoraDialogo
   m_TagString: npc
   m_Icon: {fileID: 0}
@@ -8273,7 +8278,7 @@ GameObject:
   - component: {fileID: 1233525234}
   - component: {fileID: 1233525233}
   - component: {fileID: 1233525232}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI Pekora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10060,13 +10065,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1340084260}
   - component: {fileID: 1340084262}
+  - component: {fileID: 1340084263}
   m_Layer: 5
   m_Name: Barra vida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1340084260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10140,6 +10146,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1340084263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340084259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54893947cc070bf4482a2ee5f756d3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
 --- !u!1 &1343097444
 GameObject:
   m_ObjectHideFlags: 0
@@ -11146,7 +11165,7 @@ RectTransform:
   m_Father: {fileID: 1340084260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.2636032, y: -10.8}
   m_SizeDelta: {x: 0.5272, y: 1.797}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -53028,6 +53047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barraVidaAqua: {fileID: 270790853}
+  barraVidPekora: {fileID: 0}
   pekoraController: {fileID: 1148205945}
   limitePeleaPekora: {fileID: 1336827821}
 --- !u!1 &1859173167

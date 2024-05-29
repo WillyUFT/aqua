@@ -201,6 +201,18 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
             barraVidaBoss.recibirDmg(dmg);
 
+            flashEffect.Flash();
+
+            if (puedeVolverseInvencible)
+            {
+                Invencible = true;
+            }
+
+            // * Perdemos el control
+            Perdidacontrol = true;
+            Animator animator = gameObject.GetComponent<Animator>();
+            animator.SetTrigger("hurt");
+            StartCoroutine(RecuperarControl(0.1f));
         }
     }
 

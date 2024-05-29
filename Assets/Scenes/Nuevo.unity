@@ -921,11 +921,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8263193396816614816, guid: 7661214f75878e34ebdb92fe227f85d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 247.72
+      value: 236.3
       objectReference: {fileID: 0}
     - target: {fileID: 8263193396816614816, guid: 7661214f75878e34ebdb92fe227f85d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -71.38
+      value: -71.65
       objectReference: {fileID: 0}
     - target: {fileID: 8263193396816614816, guid: 7661214f75878e34ebdb92fe227f85d7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2482,11 +2482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3716576422050103951, guid: 6c6e8361b15694574b0c82a75f6b864a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 247.72
+      value: 236.3
       objectReference: {fileID: 0}
     - target: {fileID: 3716576422050103951, guid: 6c6e8361b15694574b0c82a75f6b864a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.88
+      value: -73.15
       objectReference: {fileID: 0}
     - target: {fileID: 3716576422050103951, guid: 6c6e8361b15694574b0c82a75f6b864a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4847,7 +4847,7 @@ Transform:
   m_GameObject: {fileID: 727552803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 247.72, y: -71.38, z: -9.99}
+  m_LocalPosition: {x: 236.3, y: -71.65, z: -9.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9942,7 +9942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1336827822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53047,7 +53047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barraVidaAqua: {fileID: 270790853}
-  barraVidPekora: {fileID: 0}
+  barraVidPekora: {fileID: 1340084259}
   pekoraController: {fileID: 1148205945}
   limitePeleaPekora: {fileID: 1336827821}
 --- !u!1 &1859173167

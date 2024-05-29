@@ -9,6 +9,7 @@ namespace DialogueSystem
         [SerializeField] private GameObject barraVidaAqua;
         [SerializeField] private GameObject barraVidPekora;
         private IEnumerator dialogSeg;
+        [SerializeField] private bool activarJefe = false;
 
         private PlayerController playerController;
         private PlayerCombatController playerCombatController;
@@ -16,7 +17,6 @@ namespace DialogueSystem
         [SerializeField]
         private PekoraController pekoraController;
         [SerializeField] private GameObject limitePeleaPekora;
-
         private GameObject cajitaNpcPekora;
 
         private void Start()
@@ -58,15 +58,18 @@ namespace DialogueSystem
             gameObject.SetActive(false);
             barraVidaAqua.SetActive(true);
             DesactivarMovimiento(true);
-            pekoraController.SetNpc(false);
-            pekoraController.gameObject.tag = "jefe";
-            GameObject pekoraDialogo = pekoraController.gameObject.transform.Find("PekoraDialogo").gameObject;
-            if (pekoraDialogo != null)
+            if (activarJefe)
             {
-                pekoraDialogo.SetActive(false);
+                pekoraController.SetNpc(false);
+                pekoraController.gameObject.tag = "jefe";
+                GameObject pekoraDialogo = pekoraController.gameObject.transform.Find("PekoraDialogo").gameObject;
+                if (pekoraDialogo != null)
+                {
+                    pekoraDialogo.SetActive(false);
+                }
+                limitePeleaPekora.SetActive(true);
+                barraVidPekora.SetActive(true);
             }
-            limitePeleaPekora.SetActive(true);
-            barraVidPekora.SetActive(true);
         }
 
         private void DesactivarMovimiento(bool valor)

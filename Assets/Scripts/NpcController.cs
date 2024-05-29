@@ -8,6 +8,7 @@ public class NpcController : MonoBehaviour
     private PlayerCleaningController playerCleaningController;
     [SerializeField]
     private PekoraController pekoraController;
+    [SerializeField] private bool activarJefe = false;
 
     private void Start()
     {

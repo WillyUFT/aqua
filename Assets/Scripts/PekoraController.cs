@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PekoraController : MonoBehaviour
@@ -20,15 +21,16 @@ public class PekoraController : MonoBehaviour
     [SerializeField] public GameObject misilPrefab;
 
     private BossController bossController;
+    private EnemyDmg enemyDmg;
 
     private int vecesAtaqueEspada = 0;
     private int vecesAtaqueCohete = 0;
 
-
     void Awake()
     {
-        // Inicializar bossController en Awake
         bossController = GetComponent<BossController>();
+        enemyDmg = GetComponent<EnemyDmg>();
+
 
         if (bossController == null)
         {
@@ -65,6 +67,7 @@ public class PekoraController : MonoBehaviour
     //* -------------------------------------------------------------------------- */
     public void ataqueNormal()
     {
+        enemyDmg.Invencible = true;
         vecesAtaqueCohete = 0;
         bossController.setPuedeMoverse(false);
         rigidBody.velocity = new Vector2(fuerzaDash * -transform.localScale.x, 0);
@@ -80,7 +83,7 @@ public class PekoraController : MonoBehaviour
         bossController.setPuedeMoverse(true);
         vecesAtaqueEspada++;
         animator.SetBool("attack", false);
-        // animator.SetTrigger("idle");
+        enemyDmg.Invencible = false;
     }
 
     //* -------------------------------------------------------------------------- */
@@ -88,6 +91,7 @@ public class PekoraController : MonoBehaviour
     //* -------------------------------------------------------------------------- */
     public void LanzarMisil()
     {
+        enemyDmg.Invencible = true;
         vecesAtaqueEspada = 0;
         bossController.setPuedeMoverse(false);
         int anguloAleatorioEnZ = Random.Range(30, 60);
@@ -99,6 +103,6 @@ public class PekoraController : MonoBehaviour
         bossController.setPuedeMoverse(true);
         vecesAtaqueCohete++;
         animator.SetBool("rocket", false);
-        // animator.SetTrigger("idle");
+        enemyDmg.Invencible = false;
     }
 }

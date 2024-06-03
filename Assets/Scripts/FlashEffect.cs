@@ -8,6 +8,9 @@ public class FlashEffect : MonoBehaviour
     private Material flashMaterial;
 
     [SerializeField]
+    private Material flashInvulnerableMaterial;
+
+    [SerializeField]
     private float duration;
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
@@ -19,20 +22,34 @@ public class FlashEffect : MonoBehaviour
         originalMaterial = spriteRenderer.material;
     }
 
-    public void Flash()
+    public void FlashDmg()
     {
         if (flashRoutine != null)
         {
             StopCoroutine(flashRoutine);
         }
-        flashRoutine = StartCoroutine(FlashRoutine());
+        flashRoutine = StartCoroutine(FlashRoutine(flashMaterial));
     }
 
-    private IEnumerator FlashRoutine()
+    public void FlashInvulnerable()
+    {
+        if (flashRoutine != null)
+        {
+            StopCoroutine(flashRoutine);
+        }
+        flashRoutine = StartCoroutine(FlashRoutine(flashInvulnerableMaterial));
+    }
+
+    private IEnumerator FlashRoutine(Material flashMaterial)
     {
         spriteRenderer.material = flashMaterial;
         yield return new WaitForSeconds(duration);
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }
+
+
+
 }
+
+

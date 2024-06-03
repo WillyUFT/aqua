@@ -40,7 +40,7 @@ public class EnemyCombatController : MonoBehaviour
         vidaActual -= dmg;
         KnockbackDmg();
         barraVidaEnemigo.ActualizarVida(vidaActual, vidaMaxima);
-        flashEffect.Flash();
+        flashEffect.FlashDmg();
         if (vidaActual <= 0)
         {
             Muerte();

@@ -13,6 +13,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
     public float velocidadMovimiento = 0;
 
     [Header("Golpeado")]
+    private int vecesGolpeado = 0;
     public bool golpeado = false;
 
     [Header("Rigidbody")]
@@ -87,6 +88,11 @@ public class EnemyDmg : MonoBehaviour, IDamageable
                 Perdidacontrol = false;
             }
         }
+        if (vecesGolpeado > 1)
+        {
+            volverInvencible(4);
+            vecesGolpeado = 0;
+        }
     }
 
     public float Vida
@@ -128,6 +134,21 @@ public class EnemyDmg : MonoBehaviour, IDamageable
                 tiempoInvencibleTranscurrido = 0f;
             }
         }
+    }
+
+    public void volverInvencible(float duracion)
+    {
+
+        StartCoroutine(InvencibleTemporizador(duracion));
+
+    }
+
+    private IEnumerator InvencibleTemporizador(float duracion)
+    {
+        Invencible = true;
+        yield return new WaitForSeconds(duracion);
+        Invencible = false;
+
     }
 
     public bool Perdidacontrol
@@ -180,7 +201,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
             RealizarKnockback(knockback);
 
-            flashEffect.Flash();
+            flashEffect.FlashDmg();
 
             if (puedeVolverseInvencible)
             {
@@ -191,6 +212,12 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             Perdidacontrol = true;
             StartCoroutine(RecuperarControl(0.1f));
         }
+        else
+        {
+
+            flashEffect.FlashInvulnerable();
+        }
+
     }
 
     public void RecibirDmg(float dmg)
@@ -201,7 +228,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
             barraVidaBoss.recibirDmg(dmg);
 
-            flashEffect.Flash();
+            flashEffect.FlashDmg();
 
             if (puedeVolverseInvencible)
             {
@@ -213,7 +240,13 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             Animator animator = gameObject.GetComponent<Animator>();
             animator.SetTrigger("hurt");
             StartCoroutine(RecuperarControl(0.1f));
+            vecesGolpeado++;
         }
+        else
+        {
+            flashEffect.FlashInvulnerable();
+        }
+
     }
 
     public void RealizarKnockback(Vector2 knockback)

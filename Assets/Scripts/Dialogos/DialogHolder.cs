@@ -40,6 +40,7 @@ namespace DialogueSystem
                 Deactivate();
                 gameObject.SetActive(false);
                 StopCoroutine(dialogSeg);
+                VolverJugar();
             }
         }
 
@@ -55,6 +56,11 @@ namespace DialogueSystem
             }
 
             yield return new WaitForSeconds(0.2f);
+            VolverJugar();
+        }
+
+        private void VolverJugar()
+        {
             gameObject.SetActive(false);
             barraVidaAqua.SetActive(true);
             DesactivarMovimiento(true);

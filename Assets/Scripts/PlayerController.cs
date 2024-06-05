@@ -49,6 +49,17 @@ public class PlayerController : MonoBehaviour
 
     private Invulnerabilidad invulnerabilidad;
 
+
+    [Header("Sonidos")]
+    [SerializeField]
+    private AudioClip salto;
+
+    [SerializeField]
+    private AudioClip pasos;
+
+    [SerializeField]
+    private AudioClip dash;
+
     //^ ------------------------------- Animaciones ------------------------------ */
     [Header("Animaciones")]
     public Animator animator;
@@ -121,6 +132,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !saltoBloqueado)
         {
+
+            // * Ejecutar sonido salto
+            SoundManager.instance.PlaySound(salto);
+
             if (enSuelo)
             {
                 saltosExtraRestantes = saltosExtra;
@@ -236,6 +251,7 @@ public class PlayerController : MonoBehaviour
         // * Creamos la dirección con los inputs anteriores
         direccion = new Vector2(x, y);
         caminar();
+
     }
 
     public void SetPuedeMoverse(bool estado)
@@ -274,6 +290,11 @@ public class PlayerController : MonoBehaviour
             );
             cambiarDireccion();
         }
+    }
+
+    public void reproducirPasos()
+    {
+        SoundManager.instance.PlaySound(pasos);
     }
 
     private void cambiarDireccion()
@@ -370,6 +391,7 @@ public class PlayerController : MonoBehaviour
     private void Dashear()
     {
         rigidBody.velocity = new Vector2(velocidadDash * Mathf.Sign(transform.localScale.x), 0);
+        SoundManager.instance.PlaySound(dash);
         animator.SetTrigger("dash");
         invulnerabilidad.VolverseInvulnerableHabilidad(tiempoDash);
         trailRenderer.emitting = true;

@@ -98,15 +98,6 @@ public class PlayerCombatController : MonoBehaviour
             0
         );
 
-        // foreach (
-        //     var enemyTransform in objetos
-        //         .Where(collider => collider.CompareTag("enemigo"))
-        //         .Select(collider => collider.transform)
-        // )
-        // {
-        //     enemyTransform.GetComponent<EnemyDmg>().RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
-        // }
-
         foreach (
             var enemyTransform in objetos
         )

@@ -17,9 +17,6 @@ public class PlayerCombatController : MonoBehaviour
     public Rigidbody2D rigidBody;
     public PlayerController playerController;
 
-    [SerializeField]
-    private MenuGameOver menuGameOver;
-
     [Header("Daño")]
     [SerializeField]
     private Vector2 velocidadKnockBack;
@@ -50,6 +47,16 @@ public class PlayerCombatController : MonoBehaviour
     private float anchoBloqueoHitbox;
     public bool bloqueando;
     private bool puedeBloquear = true;
+
+    [Header("Sonidos")]
+    [SerializeField]
+    private AudioClip golpear;
+
+    [SerializeField]
+    private AudioClip recibirDmg;
+
+    [SerializeField]
+    private AudioClip recibirDmgBlock;
 
     public void Start()
     {
@@ -91,7 +98,6 @@ public class PlayerCombatController : MonoBehaviour
     {
         Vector2 tamanoCaja = new Vector2(anchoHitBoxNormal, largoHitboxNormal);
 
-        // Collider2D[] objetos = Physics2D.OverlapBoxAll((Vector2)transform.position, tamanoCaja, 0);
         Collider2D[] objetos = Physics2D.OverlapBoxAll(
             (Vector2)controladorGolpe.position,
             tamanoCaja,
@@ -107,6 +113,8 @@ public class PlayerCombatController : MonoBehaviour
             if (enemyTransform.CompareTag("enemigo"))
             {
                 enemyDmg.RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
+                SoundManager.instance.PlaySound(golpear);
+
             }
             else if (enemyTransform.CompareTag("jefe"))
             {
@@ -154,7 +162,8 @@ public class PlayerCombatController : MonoBehaviour
         {
             if (bloqueando)
             {
-                dmg = dmg / 2;
+                dmg /= 2;
+                SoundManager.instance.PlaySound(recibirDmgBlock);
             }
             else
             {
@@ -192,6 +201,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         PerderControl();
         animator.SetTrigger("hurt");
+        SoundManager.instance.PlaySound(recibirDmg);
 
         float direccionKnockback = Mathf.Sign(transform.localScale.x);
         rigidBody.velocity = new Vector2(

@@ -17,6 +17,7 @@ TagManager:
   - npcButton
   - mapa
   - tutorial
+  - limitesLimpiezaPekora
   layers:
   - Default
   - TransparentFX

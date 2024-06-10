@@ -8,12 +8,20 @@ public class PlayerCleaningController : MonoBehaviour
     //*                                  Variables                                 */
     //* -------------------------------------------------------------------------- */
 
+
+
     [Header("Limpieza")]
     [SerializeField]
     private Collider2D[] overlapEscoba;
 
     [SerializeField]
     private Collider2D[] overlapPlumero;
+
+    [SerializeField]
+    public ZonaLimpieza zonaLimpieza;
+
+    [SerializeField]
+    public BarraLimpieza barraLimpieza;
 
     private bool puedeEliminarCaminoEscoba = false;
     private bool puedeEliminarCaminoPlumero = false;
@@ -64,6 +72,23 @@ public class PlayerCleaningController : MonoBehaviour
 
     private bool puedeLimpiar = true;
 
+    [Header("Sonido")]
+    [SerializeField]
+    public AudioClip barrido;
+
+    [SerializeField]
+    public AudioClip descubrirCamino;
+
+    [Header("Pekora")]
+    [SerializeField]
+    public EnemyDmg enemyDmg;
+
+
+    public void ejecutarBarridoSonido()
+    {
+        SoundManager.instance.PlaySound(barrido);
+    }
+
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -84,6 +109,7 @@ public class PlayerCleaningController : MonoBehaviour
             Debug.LogError("Falta el playerController");
         }
         HandleLimpieza();
+        Debug.Log("Animación activa: " + animacionActiva);
     }
 
     private void OnDrawGizmos()
@@ -115,10 +141,6 @@ public class PlayerCleaningController : MonoBehaviour
         {
             Sacudir();
         }
-        else if (inputVertical > 0 && !saltando && puedeLimpiar)
-        {
-            Ordenar();
-        }
         else if (animacionActiva)
         {
             DetenerAnimacion();
@@ -149,10 +171,6 @@ public class PlayerCleaningController : MonoBehaviour
             {
                 DetenerAnimacion();
             }
-            else
-            {
-                PuedeBarrerPisoFake();
-            }
         }
     }
 
@@ -167,26 +185,23 @@ public class PlayerCleaningController : MonoBehaviour
 
         foreach (Collider2D collider in overlapEscoba)
         {
-            if (collider.CompareTag("suciedadCamino"))
+            Debug.Log(collider.name);
+            if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
             {
                 puedeEliminarCaminoEscoba = true;
-                SuciedadController suciedad = collider.GetComponent<SuciedadController>();
-                if (suciedad != null)
-                {
-                    suciedad.RecibirDmg(limpiezaPorSegundoEscoba * Time.deltaTime);
-                }
             }
         }
     }
 
     private void EliminarCaminoFake(GameObject collider)
     {
-        Destroy(collider);
+        // Destroy(collider);
+        SoundManager.instance.PlaySound(descubrirCamino);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("suciedad") && animacionActiva)
+        if ((other.CompareTag("suciedad") || other.CompareTag("suciedadCamino")) && animacionActiva)
         {
             SuciedadController suciedad = other.GetComponent<SuciedadController>();
             if (suciedad != null)
@@ -226,6 +241,7 @@ public class PlayerCleaningController : MonoBehaviour
 
     public void puedeSacurdirSuciedad()
     {
+
         Vector2 tamanoPlumero = new Vector2(anchoHitBoxPlumero, largoHitboxPlumero);
         overlapPlumero = Physics2D.OverlapBoxAll(
             (Vector2)transform.position + plumero,
@@ -248,6 +264,9 @@ public class PlayerCleaningController : MonoBehaviour
 
     public void PuedeSacudirParedFake()
     {
+
+        if (!animacionActiva) return;
+
         Vector2 tamanoPlumero = new Vector2(anchoHitBoxPlumero, largoHitboxPlumero);
         overlapPlumero = Physics2D.OverlapBoxAll(
             (Vector2)transform.position + plumero,
@@ -256,10 +275,15 @@ public class PlayerCleaningController : MonoBehaviour
         );
         foreach (Collider2D collider in overlapPlumero)
         {
-            if (collider.CompareTag("suciedadCamino"))
+            if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
             {
                 puedeEliminarCaminoPlumero = true;
-                EliminarCaminoFake(collider.gameObject);
+                SuciedadController suciedad = collider.GetComponent<SuciedadController>();
+                if (suciedad != null)
+                {
+                    float dmg = limpiezaPorSegundoPlumero;
+                    suciedad.RecibirDmg(dmg);
+                }
             }
         }
     }

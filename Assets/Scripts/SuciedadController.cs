@@ -7,6 +7,13 @@ public class SuciedadController : MonoBehaviour
     [SerializeField] public float vidaMaximaSuciedad;
     public float vidaActualSuciedad;
 
+    [SerializeField]
+    public BarraLimpieza barraLimpieza;
+
+    [Header("Sonido")]
+    [SerializeField]
+    public AudioClip descubrirCamino;
+
     void Start()
     {
         vidaActualSuciedad = vidaMaximaSuciedad;
@@ -23,10 +30,16 @@ public class SuciedadController : MonoBehaviour
 
     private void Muerte()
     {
+        SoundManager.instance.PlaySound(descubrirCamino);
+        if (barraLimpieza != null)
+        {
+            barraLimpieza.recibirDmg(vidaMaximaSuciedad);
+        }
         Destroy(gameObject);
     }
 
-    public float GetVida() {
+    public float GetVida()
+    {
         return vidaActualSuciedad;
     }
 }

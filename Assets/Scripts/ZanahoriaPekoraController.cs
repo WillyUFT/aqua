@@ -5,13 +5,49 @@ public class ZanahoriaPekoraController : MonoBehaviour
 {
     public Transform target;
 
-    [SerializeField] public float speed = 12f;
+    [SerializeField] public float initialSpeed;
+    [SerializeField] public float speed;
 
-    [SerializeField] public float rotateSpeed = 170f;
+    [SerializeField] public float rotateSpeed;
     private Rigidbody2D rigidBody;
     private bool seguirJugador = false;
 
-    [SerializeField] private float tiempoParaSeguir = 1f;
+    [SerializeField] private float tiempoParaSeguir;
+
+    public void SetVelocidad(float valor)
+    {
+        speed = valor;
+    }
+
+    public float GetVelocidad()
+    {
+        return speed;
+    }
+
+    public float GetVelocidadInicial()
+    {
+        return initialSpeed;
+    }
+
+    public void SetVelocidadRotacion(float valor)
+    {
+        rotateSpeed = valor;
+    }
+
+    public float GetVelocidadRotacion()
+    {
+        return rotateSpeed;
+    }
+
+    public void SetTiempo(float valor)
+    {
+        tiempoParaSeguir = valor;
+    }
+
+    public float GetTiempo()
+    {
+        return tiempoParaSeguir;
+    }
 
     void Start()
     {
@@ -19,7 +55,7 @@ public class ZanahoriaPekoraController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         // * Generamos un ángulo aleatorio
-        float anguloinicial = Random.Range(30f, 60f);
+        float anguloinicial = Random.Range(20f, 70f);
         float anguloEnRadianes = anguloinicial * Mathf.Deg2Rad;
 
         Vector2 direccionDiagonal = new Vector2(
@@ -50,6 +86,8 @@ public class ZanahoriaPekoraController : MonoBehaviour
         {
             rigidBody.velocity = transform.up * speed;
         }
+        Debug.Log("Velocidad cohete: " + GetVelocidad());
+        Debug.Log("Velocidad rotación cohete: " + GetVelocidadRotacion());
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -67,13 +105,6 @@ public class ZanahoriaPekoraController : MonoBehaviour
     void ChocarConJugador()
     {
         Debug.Log("El misil ha chocado con el jugador");
-        Destroy(gameObject);
-    }
-
-    void ChocarConOtro(Collider2D other)
-    {
-        Debug.Log("El misil ha chocado con el objeto: " + other.tag);
-        Debug.Log("El misil ha chocado con algo que no es el jugador ni el jefe");
         Destroy(gameObject);
     }
 }

@@ -32,6 +32,16 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
 
     }
 
+    public void SetVelocidadMovimiento(float valor)
+    {
+        velocidadMovimiento = valor;
+    }
+
+    public float GetVelocidadMovimiento()
+    {
+        return velocidadMovimiento;
+    }
+
     public override void OnStateUpdate(
         Animator animator,
         AnimatorStateInfo stateInfo,

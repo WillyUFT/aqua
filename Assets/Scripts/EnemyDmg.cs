@@ -23,10 +23,12 @@ public class EnemyDmg : MonoBehaviour, IDamageable
     [Header("Vida")]
     public bool vivo = true;
     public float vida;
-    private float vidaMaxima;
+    public float vidaMaxima;
 
     [Header("Barra de vida")]
     private BarraVidaEnemigo barraVidaEnemigo;
+    [SerializeField] BarraLimpieza barraLimpieza;
+    [SerializeField] float vidaLimpiezaMaxima;
     [Header("Barra de vida Jefe")]
     [SerializeField]
     private BarraVidaBoss barraVidaBoss;
@@ -46,8 +48,22 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
     [SerializeField]
     public float tiempoPerdidaControl = 0f;
-
     private FlashEffect flashEffect;
+
+    private bool muerto = false;
+
+    [Header("Sonido")]
+    [SerializeField]
+    private AudioClip dmgSound;
+
+    [SerializeField]
+    private AudioClip dmgInvencibleSound;
+
+    [SerializeField]
+    private AudioClip saltoNousagi;
+
+    [SerializeField]
+    private AudioClip dmgPekora;
 
     public void Start()
     {
@@ -63,7 +79,13 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         else if (gameObject.tag == "jefe" || gameObject.tag == "npc")
         {
             barraVidaBoss.SetVidaInicial(vidaMaxima);
+            barraLimpieza.SetVidaInicial(vidaLimpiezaMaxima);
         }
+    }
+
+    public void SetMuerto(bool valor)
+    {
+        muerto = valor;
     }
 
     public void Awake()
@@ -73,6 +95,11 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             barraVidaEnemigo = GetComponentInChildren<BarraVidaEnemigo>();
 
         }
+    }
+
+    public void SaltoNousagiSound()
+    {
+        SoundManager.instance.PlaySound(saltoNousagi);
     }
 
     void FixedUpdate()
@@ -95,6 +122,16 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         }
     }
 
+    public float GetVelocidadMovimiento()
+    {
+        return velocidadMovimiento;
+    }
+
+    public void SetVelocidadMovimiento(float valor)
+    {
+        velocidadMovimiento = valor;
+    }
+
     public float Vida
     {
         set
@@ -102,8 +139,11 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             vida = value;
             if (vida <= 0)
             {
-                Targeteable = false;
-                Destruir();
+                if (gameObject.tag != "jefe")
+                {
+                    Targeteable = false;
+                    Destruir();
+                }
             }
         }
         get { return vida; }
@@ -201,6 +241,8 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
             RealizarKnockback(knockback);
 
+            SoundManager.instance.PlaySound(dmgSound);
+
             flashEffect.FlashDmg();
 
             if (puedeVolverseInvencible)
@@ -216,6 +258,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         {
 
             flashEffect.FlashInvulnerable();
+            SoundManager.instance.PlaySound(dmgInvencibleSound);
         }
 
     }
@@ -227,6 +270,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             Vida -= dmg;
 
             barraVidaBoss.recibirDmg(dmg);
+            SoundManager.instance.PlaySound(dmgPekora);
 
             flashEffect.FlashDmg();
 
@@ -239,12 +283,13 @@ public class EnemyDmg : MonoBehaviour, IDamageable
             Perdidacontrol = true;
             Animator animator = gameObject.GetComponent<Animator>();
             animator.SetTrigger("hurt");
-            StartCoroutine(RecuperarControl(0.1f));
+            StartCoroutine(RecuperarControl(0.05f));
             vecesGolpeado++;
         }
         else
         {
             flashEffect.FlashInvulnerable();
+            SoundManager.instance.PlaySound(dmgInvencibleSound);
         }
 
     }
@@ -263,18 +308,21 @@ public class EnemyDmg : MonoBehaviour, IDamageable
 
     public void MirarJugador()
     {
-        float direccionHaciaJugador = jugador.position.x - transform.position.x;
-
-        if (
-            (direccionHaciaJugador > 0 && transform.localScale.x > 0)
-            || (direccionHaciaJugador < 0 && transform.localScale.x < 0)
-        )
+        if (!muerto)
         {
-            transform.localScale = new Vector3(
-                -transform.localScale.x,
-                transform.localScale.y,
-                transform.localScale.z
-            );
+            float direccionHaciaJugador = jugador.position.x - transform.position.x;
+
+            if (
+                (direccionHaciaJugador > 0 && transform.localScale.x > 0)
+                || (direccionHaciaJugador < 0 && transform.localScale.x < 0)
+            )
+            {
+                transform.localScale = new Vector3(
+                    -transform.localScale.x,
+                    transform.localScale.y,
+                    transform.localScale.z
+                );
+            }
         }
     }
 

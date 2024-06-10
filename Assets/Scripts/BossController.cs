@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -20,6 +18,8 @@ public class BossController : MonoBehaviour
     private bool puedeMoverse = true;
     private float distanciaJugador;
 
+    private PekoraController pekoraController;
+
     public void setPuedeMoverse(bool valor)
     {
         puedeMoverse = valor;
@@ -35,6 +35,7 @@ public class BossController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        pekoraController = GetComponent<PekoraController>();
     }
 
     private void Update()
@@ -50,19 +51,24 @@ public class BossController : MonoBehaviour
 
     public void MirarJugador()
     {
-        float direccionHaciaJugador = jugador.position.x - transform.position.x;
 
-        if (
-            (direccionHaciaJugador > 0 && transform.localScale.x > 0)
-            || (direccionHaciaJugador < 0 && transform.localScale.x < 0)
-        )
+        if (!pekoraController.pekoraMuerta)
         {
-            transform.localScale = new Vector3(
-                -transform.localScale.x,
-                transform.localScale.y,
-                transform.localScale.z
-            );
+            float direccionHaciaJugador = jugador.position.x - transform.position.x;
+
+            if (
+                (direccionHaciaJugador > 0 && transform.localScale.x > 0)
+                || (direccionHaciaJugador < 0 && transform.localScale.x < 0)
+            )
+            {
+                transform.localScale = new Vector3(
+                    -transform.localScale.x,
+                    transform.localScale.y,
+                    transform.localScale.z
+                );
+            }
         }
+
     }
 
     public void IniciarExitIdleState()

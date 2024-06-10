@@ -10,6 +10,7 @@ namespace DialogueSystem
         [SerializeField] private GameObject barraVidPekora;
         private IEnumerator dialogSeg;
         [SerializeField] private bool activarJefe = false;
+        [SerializeField] private GameObject[] suciedadPekora;
 
         private PlayerController playerController;
         private PlayerCombatController playerCombatController;
@@ -19,12 +20,18 @@ namespace DialogueSystem
         [SerializeField] private GameObject limitePeleaPekora;
         private GameObject cajitaNpcPekora;
 
+        [Header("Música")]
+        [SerializeField] AudioClip musicaBoss;
+        private AudioSource audioSource;
+
         private void Start()
         {
             GameObject jugador = GameObject.FindGameObjectWithTag("Player");
             playerController = jugador.GetComponent<PlayerController>();
             playerCombatController = jugador.GetComponent<PlayerCombatController>();
             playerCleaningController = jugador.GetComponent<PlayerCleaningController>();
+            audioSource = Camera.main.GetComponent<AudioSource>();
+
         }
 
         private void OnEnable()
@@ -68,6 +75,7 @@ namespace DialogueSystem
             {
                 pekoraController.SetNpc(false);
                 pekoraController.gameObject.tag = "jefe";
+                ActivarSuciedadPekora();
                 GameObject pekoraDialogo = pekoraController.gameObject.transform.Find("PekoraDialogo").gameObject;
                 if (pekoraDialogo != null)
                 {
@@ -75,6 +83,16 @@ namespace DialogueSystem
                 }
                 limitePeleaPekora.SetActive(true);
                 barraVidPekora.SetActive(true);
+                audioSource.clip = musicaBoss;
+                audioSource.Play();
+            }
+        }
+
+        private void ActivarSuciedadPekora()
+        {
+            foreach (var suciedad in suciedadPekora)
+            {
+                suciedad.SetActive(true);
             }
         }
 

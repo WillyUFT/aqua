@@ -16,11 +16,19 @@ public class BarraVidaAqua : MonoBehaviour
     [Header("Jugador")]
     [SerializeField]
     public PlayerCombatController playerCombatController;
+    public PlayerCleaningController playerCleaningController;
+    public PekoraController pekoraController;
+
 
     [SerializeField]
     public PlayerController playerController;
 
     private Portrait portraitController;
+
+    [Header("Game Over")]
+    [SerializeField]
+    public MenuGameOver menuGameOver;
+
 
     void Start()
     {
@@ -56,18 +64,29 @@ public class BarraVidaAqua : MonoBehaviour
         playerCombatController.animator.SetTrigger("die");
         playerCombatController.PerderControl();
         playerController.rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        DesactivarMovimiento(false);
+        pekoraController.SetNpc(true);
         StartCoroutine(ActivarMenuGameOver());
     }
 
     private IEnumerator ActivarMenuGameOver()
     {
         yield return new WaitForSeconds(1f);
-        // menuGameOver.ActivarMenu();
+        menuGameOver.ActivarMenu();
         SacarBarra();
     }
 
     public void SacarBarra()
     {
         gameObject.SetActive(false);
+    }
+
+    private void DesactivarMovimiento(bool valor)
+    {
+        playerController.activarDesactivarMovimiento(valor);
+        playerController.SetSaltoBloqueado(!valor);
+        playerCombatController.SetPuedeAtacar(valor);
+        playerCombatController.SetPuedeBloquear(valor);
+        playerCleaningController.SetPuedeLimpiar(valor);
     }
 }

@@ -128,9 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 7
+  initialSpeed: 10
+  speed: 10
   rotateSpeed: 150
-  tiempoParaSeguir: 0.2
+  tiempoParaSeguir: 0.4
 --- !u!60 &5662762308029165117
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -212,5 +213,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c243dc8b269784c8d8dc71316efe15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAttack: 5
-  dmgTouch: 5
+  dmgAttack: 10
+  dmgTouch: 10

@@ -84,9 +84,69 @@ public class PlayerCleaningController : MonoBehaviour
     public EnemyDmg enemyDmg;
 
 
-    public void ejecutarBarridoSonido()
+    public void LimparEscoba()
     {
         SoundManager.instance.PlaySound(barrido);
+
+        Vector2 tamanoEscoba = new Vector2(anchoHitBoxEscoba, largoHitboxEscoba);
+        overlapEscoba = Physics2D.OverlapBoxAll(
+            (Vector2)transform.position + escoba,
+            tamanoEscoba,
+            0
+        );
+
+        foreach (Collider2D collider in overlapEscoba)
+        {
+            if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
+            {
+                puedeEliminarCaminoEscoba = true;
+                SuciedadController suciedad = collider.GetComponent<SuciedadController>();
+                if (suciedad != null)
+                {
+                    float dmg = limpiezaPorSegundoEscoba;
+                    Debug.Log("Haciendo daño a la suciedad (ESCOBA)");
+                    suciedad.RecibirDmg(dmg);
+                    Debug.Log("Vida máxima suciedad" + suciedad.vidaMaximaSuciedad);
+                    Debug.Log("Vida actual suciedad" + suciedad.vidaActualSuciedad);
+                }
+            }
+        }
+    }
+
+    public void LimpiarPlumero()
+    {
+        SoundManager.instance.PlaySound(barrido);
+
+        Vector2 tamanoPlumero = new Vector2(anchoHitBoxPlumero, largoHitboxPlumero);
+        Vector2 posicionPlumero = (Vector2)transform.position + plumero;
+
+        if (transform.localScale.x < 0)
+        {
+            posicionPlumero = (Vector2)transform.position - plumero;
+        }
+
+        overlapPlumero = Physics2D.OverlapBoxAll(
+            posicionPlumero,
+            tamanoPlumero,
+            0
+        );
+        foreach (Collider2D collider in overlapPlumero)
+        {
+            if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
+            {
+                puedeEliminarCaminoPlumero = true;
+                SuciedadController suciedad = collider.GetComponent<SuciedadController>();
+                if (suciedad != null)
+                {
+                    float dmg = limpiezaPorSegundoPlumero;
+                    Debug.Log("Haciendo daño a la suciedad (PLUMERO)");
+                    suciedad.RecibirDmg(dmg);
+                    Debug.Log("Vida máxima suciedad" + suciedad.vidaMaximaSuciedad);
+                    Debug.Log("Vida actual suciedad" + suciedad.vidaActualSuciedad);
+                }
+            }
+        }
+
     }
 
     void Start()
@@ -109,7 +169,6 @@ public class PlayerCleaningController : MonoBehaviour
             Debug.LogError("Falta el playerController");
         }
         HandleLimpieza();
-        Debug.Log("Animación activa: " + animacionActiva);
     }
 
     private void OnDrawGizmos()
@@ -118,9 +177,19 @@ public class PlayerCleaningController : MonoBehaviour
         Vector2 tamanoEscoba = new Vector2(anchoHitBoxEscoba, largoHitboxEscoba);
         Gizmos.DrawWireCube((Vector2)transform.position + escoba, tamanoEscoba);
 
+        // Dibujar la hitbox del plumero
         Gizmos.color = Color.green;
         Vector2 tamanoPlumero = new Vector2(anchoHitBoxPlumero, largoHitboxPlumero);
-        Gizmos.DrawWireCube((Vector2)transform.position + plumero, tamanoPlumero);
+
+        // Ajustar la posición del plumero en función de la dirección del personaje
+        Vector2 posicionPlumero = (Vector2)transform.position + plumero;
+        if (transform.localScale.x < 0)
+        {
+            // El personaje está mirando a la izquierda
+            posicionPlumero = (Vector2)transform.position - plumero;
+        }
+
+        Gizmos.DrawWireCube(posicionPlumero, tamanoPlumero);
     }
 
     public void SetPuedeLimpiar(bool valor)
@@ -176,21 +245,23 @@ public class PlayerCleaningController : MonoBehaviour
 
     public void PuedeBarrerPisoFake()
     {
-        Vector2 tamanoEscoba = new Vector2(anchoHitBoxEscoba, largoHitboxEscoba);
-        overlapEscoba = Physics2D.OverlapBoxAll(
-            (Vector2)transform.position + escoba,
-            tamanoEscoba,
-            0
-        );
+        // Vector2 tamanoEscoba = new Vector2(anchoHitBoxEscoba, largoHitboxEscoba);
+        // overlapEscoba = Physics2D.OverlapBoxAll(
+        //     (Vector2)transform.position + escoba,
+        //     tamanoEscoba,
+        //     0
+        // );
 
-        foreach (Collider2D collider in overlapEscoba)
-        {
-            Debug.Log(collider.name);
-            if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
-            {
-                puedeEliminarCaminoEscoba = true;
-            }
-        }
+        // foreach (Collider2D collider in overlapEscoba)
+        // {
+        //     if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
+        //     {
+        //         puedeEliminarCaminoEscoba = true;
+        //     }
+        // }
+
+        Debug.Log("PuedeBarrerPisoFake()");
+
     }
 
     private void EliminarCaminoFake(GameObject collider)
@@ -199,18 +270,18 @@ public class PlayerCleaningController : MonoBehaviour
         SoundManager.instance.PlaySound(descubrirCamino);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if ((other.CompareTag("suciedad") || other.CompareTag("suciedadCamino")) && animacionActiva)
-        {
-            SuciedadController suciedad = other.GetComponent<SuciedadController>();
-            if (suciedad != null)
-            {
-                Debug.Log("HACIENDO DAÑO A LA SUCIEDAD");
-                suciedad.RecibirDmg(limpiezaPorSegundoEscoba * Time.deltaTime);
-            }
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if ((other.CompareTag("suciedad") || other.CompareTag("suciedadCamino")) && animacionActiva)
+    //     {
+    //         SuciedadController suciedad = other.GetComponent<SuciedadController>();
+    //         if (suciedad != null)
+    //         {
+    //             Debug.Log("HACIENDO DAÑO A LA SUCIEDAD");
+    //             suciedad.RecibirDmg(limpiezaPorSegundoEscoba * Time.deltaTime);
+    //         }
+    //     }
+    // }
 
     private void Sacudir()
     {
@@ -265,27 +336,36 @@ public class PlayerCleaningController : MonoBehaviour
     public void PuedeSacudirParedFake()
     {
 
-        if (!animacionActiva) return;
+        // if (!animacionActiva) return;
 
-        Vector2 tamanoPlumero = new Vector2(anchoHitBoxPlumero, largoHitboxPlumero);
-        overlapPlumero = Physics2D.OverlapBoxAll(
-            (Vector2)transform.position + plumero,
-            tamanoPlumero,
-            0
-        );
-        foreach (Collider2D collider in overlapPlumero)
-        {
-            if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
-            {
-                puedeEliminarCaminoPlumero = true;
-                SuciedadController suciedad = collider.GetComponent<SuciedadController>();
-                if (suciedad != null)
-                {
-                    float dmg = limpiezaPorSegundoPlumero;
-                    suciedad.RecibirDmg(dmg);
-                }
-            }
-        }
+        // Vector2 tamanoPlumero = new Vector2(anchoHitBoxPlumero, largoHitboxPlumero);
+        // Vector2 posicionPlumero = (Vector2)transform.position + plumero;
+
+        // if (transform.localScale.x < 0)
+        // {
+        //     posicionPlumero = (Vector2)transform.position - plumero;
+        // }
+
+        // overlapPlumero = Physics2D.OverlapBoxAll(
+        //     posicionPlumero,
+        //     tamanoPlumero,
+        //     0
+        // );
+        // foreach (Collider2D collider in overlapPlumero)
+        // {
+        //     if (collider.CompareTag("suciedadCamino") || collider.CompareTag("suciedad"))
+        //     {
+        //         puedeEliminarCaminoPlumero = true;
+        //         SuciedadController suciedad = collider.GetComponent<SuciedadController>();
+        //         if (suciedad != null)
+        //         {
+        //             float dmg = limpiezaPorSegundoPlumero;
+        //             suciedad.RecibirDmg(dmg);
+        //         }
+        //     }
+        // }
+
+        Debug.Log("PuedeSacuridParedFake()");
     }
 
     private void Ordenar()

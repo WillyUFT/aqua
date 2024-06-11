@@ -6,8 +6,10 @@ namespace DialogueSystem
     public class DialogHolder : MonoBehaviour
     {
 
+        [Header("Barras de vida")]
         [SerializeField] private GameObject barraVidaAqua;
         [SerializeField] private GameObject barraVidPekora;
+        [SerializeField] private GameObject barraLimpieza;
         private IEnumerator dialogSeg;
         [SerializeField] private bool activarJefe = false;
         [SerializeField] private GameObject[] suciedadPekora;
@@ -23,6 +25,9 @@ namespace DialogueSystem
         [Header("Música")]
         [SerializeField] AudioClip musicaBoss;
         private AudioSource audioSource;
+
+        private GameObject[] suciedadesPekora;
+
 
         private void Start()
         {
@@ -82,10 +87,24 @@ namespace DialogueSystem
                     pekoraDialogo.SetActive(false);
                 }
                 limitePeleaPekora.SetActive(true);
+                encenderBarraLimpieza();
                 barraVidPekora.SetActive(true);
                 audioSource.clip = musicaBoss;
                 audioSource.Play();
             }
+        }
+
+        private void encenderBarraLimpieza()
+        {
+            barraLimpieza.SetActive(true);
+
+            float cantidadVida = 0;
+            suciedadesPekora = GameObject.FindGameObjectsWithTag("suciedad");
+            foreach (var item in suciedadesPekora)
+            {
+                cantidadVida += item.GetComponent<SuciedadController>().vidaMaximaSuciedad;
+            }
+            barraLimpieza.GetComponent<BarraLimpieza>().SetVidaInicial(cantidadVida);
         }
 
         private void ActivarSuciedadPekora()

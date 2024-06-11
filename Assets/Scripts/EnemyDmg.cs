@@ -79,7 +79,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         else if (gameObject.tag == "jefe" || gameObject.tag == "npc")
         {
             barraVidaBoss.SetVidaInicial(vidaMaxima);
-            barraLimpieza.SetVidaInicial(vidaLimpiezaMaxima);
+            // barraLimpieza.SetVidaInicial(vidaLimpiezaMaxima);
         }
     }
 

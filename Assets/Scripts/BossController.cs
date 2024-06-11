@@ -8,7 +8,8 @@ public class BossController : MonoBehaviour
     public Rigidbody2D rigidBody;
 
     [Header("Movimiento")]
-    public Transform jugador;
+    public Transform jugadorTransform;
+    public PlayerController playerController;
 
     [SerializeField] public float distanciaUmbral;
 
@@ -16,7 +17,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private float vida;
 
     private bool puedeMoverse = true;
-    private float distanciaJugador;
+    private float distanciaHorizontalJugador;
+    private float distanciaVerticalJugador;
 
     private PekoraController pekoraController;
 
@@ -34,27 +36,36 @@ public class BossController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
-        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        jugadorTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         pekoraController = GetComponent<PekoraController>();
     }
 
     private void Update()
     {
-        distanciaJugador = Vector2.Distance(transform.position, jugador.position);
-        animator.SetFloat("distanciaJugador", distanciaJugador);
+        distanciaHorizontalJugador = Vector2.Distance(transform.position, jugadorTransform.position);
+        // distanciaHorizontalJugador = Mathf.Abs(transform.position.x - jugadorTransform.position.x);
+        // distanciaHorizontalJugador = Mathf.Abs(transform.position.y - jugadorTransform.position.y);
+        animator.SetFloat("distanciaJugador", distanciaHorizontalJugador);
     }
 
     public float getDistanciaJugador()
     {
-        return distanciaJugador;
+        return distanciaHorizontalJugador;
     }
 
+    public bool jugadorPlataformaAire()
+    {
+        Debug.Log("Distancia vertical jugador: " + distanciaVerticalJugador);
+        Debug.Log("Saltando: " + !playerController.enSuelo);
+        return distanciaVerticalJugador >= 0 && !playerController.enSuelo;
+    }
     public void MirarJugador()
     {
 
         if (!pekoraController.pekoraMuerta)
         {
-            float direccionHaciaJugador = jugador.position.x - transform.position.x;
+            float direccionHaciaJugador = jugadorTransform.position.x - transform.position.x;
 
             if (
                 (direccionHaciaJugador > 0 && transform.localScale.x > 0)

@@ -19,6 +19,8 @@ public class BarraVidaAqua : MonoBehaviour
     public PlayerCleaningController playerCleaningController;
     public PekoraController pekoraController;
 
+    [SerializeField]
+    private BarraLimpieza barraLimpieza;
 
     [SerializeField]
     public PlayerController playerController;

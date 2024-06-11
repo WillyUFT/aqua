@@ -58,11 +58,11 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
 
         float distanciaJugador = bossController.getDistanciaJugador();
 
-        if (distanciaJugador >= 6 && distanciaJugador <= 7 && pekoraController.getVecesAtaqueCohete() < 3)
+        if (distanciaJugador >= 6)
         {
             animator.SetBool("rocket", true);
         }
-        else if (distanciaJugador <= 4 && pekoraController.getVecesAtaqueEspada() < 3)
+        else if (distanciaJugador <= 3.5)
         {
             animator.SetBool("attack", true);
         }
@@ -75,7 +75,7 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         {
             bossController.MirarJugador();
 
-            float direccionHaciaJugador = bossController.jugador.position.x - rigidBody.position.x;
+            float direccionHaciaJugador = bossController.jugadorTransform.position.x - rigidBody.position.x;
 
             Vector2 direccionMovimiento;
             if (direccionHaciaJugador < 0)

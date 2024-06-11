@@ -8,6 +8,7 @@ public class PekoraController : MonoBehaviour
 
     [SerializeField] public Rigidbody2D rigidBody;
     [SerializeField] private GameObject barraVida;
+    [SerializeField] private GameObject barraLimpieza;
 
     [SerializeField] public Animator animator;
 
@@ -78,6 +79,7 @@ public class PekoraController : MonoBehaviour
             desactivada = true;
             animator.SetBool("nada", true);
             barraVida.SetActive(false);
+            barraLimpieza.SetActive(false);
             gameObject.tag = "npc";
         }
 
@@ -157,7 +159,6 @@ public class PekoraController : MonoBehaviour
         yield return new WaitForSeconds(duracionDashNormal);
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         bossController.setPuedeMoverse(true);
-        vecesAtaqueEspada++;
         enemyDmg.Invencible = false;
     }
 
@@ -172,7 +173,6 @@ public class PekoraController : MonoBehaviour
     private IEnumerator LanzarMisilesCoroutine()
     {
         enemyDmg.Invencible = true;
-        vecesAtaqueEspada = 0;
         bossController.setPuedeMoverse(false);
         int cohetesDisparados;
 
@@ -207,7 +207,6 @@ public class PekoraController : MonoBehaviour
 
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         bossController.setPuedeMoverse(true);
-        vecesAtaqueCohete++;
         animator.SetBool("rocket", false);
         enemyDmg.Invencible = false;
     }

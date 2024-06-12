@@ -75,6 +75,16 @@ public class PekoraController : MonoBehaviour
             gameObject.tag = "npc";
             enemyDmg.SetMuerto(true);
             barraLimpieza.SetActive(false);
+            DesactivarSuciedadPekora();
+        }
+    }
+
+    private void DesactivarSuciedadPekora()
+    {
+        GameObject[] suciedadPekora = GameObject.FindGameObjectsWithTag("suciedad");
+        foreach (var item in suciedadPekora)
+        {
+            item.SetActive(false);
         }
     }
 

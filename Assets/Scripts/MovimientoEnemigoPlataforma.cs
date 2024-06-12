@@ -15,13 +15,20 @@ public class MovimientoEnemigoPlataforma : MonoBehaviour
 
     [SerializeField]
     private float distancia;
+    [SerializeField]
+    private float distanciaPared;
+    [SerializeField]
+    private float anchoPared;
+    private Vector2 direccionRaycastPared;
 
     [SerializeField]
     private bool movimientoDerecha;
 
     private Rigidbody2D rb;
     private Animator animator;
+
     private EnemyDmg enemyDmg;
+    public LayerMask piso;
 
     void Start()
     {
@@ -35,14 +42,27 @@ public class MovimientoEnemigoPlataforma : MonoBehaviour
     {
         if (!enemyDmg.Perdidacontrol && !enemyDmg.Golpeado)
         {
+            // * Detección piso
             RaycastHit2D informacionSuelo = Physics2D.Raycast(
                 controladorSuelo.position,
                 Vector2.down,
-                distancia
+                distancia,
+                piso
+            );
+
+            // Verificar si hay una pared en la dirección del movimiento
+            direccionRaycastPared = movimientoDerecha ? Vector2.right : Vector2.left;
+            RaycastHit2D informacionPared = Physics2D.BoxCast(
+                controladorSuelo.position,
+                new Vector2(anchoPared, distancia),
+                0,
+                direccionRaycastPared,
+                distanciaPared,
+                piso
             );
             rb.velocity = new Vector2(velocidadMovimientoActual, rb.velocity.y);
 
-            if (!informacionSuelo)
+            if (!informacionSuelo.collider || informacionPared.collider)
             {
                 Girar();
             }
@@ -60,8 +80,20 @@ public class MovimientoEnemigoPlataforma : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(controladorSuelo.transform.position, controladorSuelo.transform.position);
+        if (controladorSuelo != null)
+        {
+            Gizmos.color = Color.red;
+            Vector3 startPositionSuelo = controladorSuelo.position;
+            Vector3 endPositionSuelo = controladorSuelo.position + Vector3.down * distancia;
+            Gizmos.DrawLine(startPositionSuelo, endPositionSuelo);
+
+            Gizmos.color = Color.blue;
+            Vector3 startPositionPared = controladorSuelo.position;
+            Vector3 endPositionPared = movimientoDerecha
+                ? controladorSuelo.position + Vector3.right * distanciaPared
+                : controladorSuelo.position + Vector3.left * distanciaPared;
+            Gizmos.DrawWireCube(startPositionPared + (Vector3)(direccionRaycastPared * distanciaPared / 2), new Vector3(distanciaPared, distancia, 1));
+        }
     }
 
     private IEnumerator HacerIdle()

@@ -3,20 +3,17 @@ using UnityEngine;
 public class NpcController : MonoBehaviour
 {
     [SerializeField] private GameObject dialogue;
+    [SerializeField]
     private PlayerController playerController;
+    [SerializeField]
     private PlayerCombatController playerCombatController;
+    [SerializeField]
     private PlayerCleaningController playerCleaningController;
     [SerializeField]
     private PekoraController pekoraController;
     [SerializeField] private bool activarJefe = false;
-
-    private void Start()
-    {
-        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
-        playerController = jugador.GetComponent<PlayerController>();
-        playerCombatController = jugador.GetComponent<PlayerCombatController>();
-        playerCleaningController = jugador.GetComponent<PlayerCleaningController>();
-    }
+    [SerializeField]
+    GameObject jugador;
 
     public void ActivateDialogue()
     {

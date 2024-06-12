@@ -9,15 +9,22 @@ public class MenuGameOver : MonoBehaviour
     [SerializeField] private GameObject menuGameOver;
 
     [SerializeField] private BarraVidaAqua barraVidaAqua;
+    [SerializeField] private PlayerController playerController;
 
     public void ActivarMenu()
     {
         menuGameOver.SetActive(true);
     }
 
+    public void Start()
+    {
+        Debug.Log("SSDFa");
+    }
+
     public void Reiniciar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        playerController.Respawn();
+        playerController.Reiniciar();
     }
 
 }

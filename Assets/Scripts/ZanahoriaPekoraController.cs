@@ -53,6 +53,7 @@ public class ZanahoriaPekoraController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Invoke("DestruirMisil", 4f);
 
         // * Generamos un ángulo aleatorio
         float anguloinicial = Random.Range(20f, 70f);
@@ -86,8 +87,6 @@ public class ZanahoriaPekoraController : MonoBehaviour
         {
             rigidBody.velocity = transform.up * speed;
         }
-        Debug.Log("Velocidad cohete: " + GetVelocidad());
-        Debug.Log("Velocidad rotación cohete: " + GetVelocidadRotacion());
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -104,7 +103,11 @@ public class ZanahoriaPekoraController : MonoBehaviour
 
     void ChocarConJugador()
     {
-        Debug.Log("El misil ha chocado con el jugador");
+        Destroy(gameObject);
+    }
+
+    private void DestruirMisil()
+    {
         Destroy(gameObject);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -66,6 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private NpcController npcController;
 
+    // * START POSITION
+    public Vector2 startPosition;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -76,6 +80,26 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         gravedadInicial = rigidBody.gravityScale;
+        startPosition = transform.position;
+    }
+
+    public void Respawn()
+    {
+        Vector2 respawnPosition = GameManager.Instance.GetLastCheckpoint();
+        if (respawnPosition != Vector2.zero)
+        {
+            transform.position = respawnPosition;
+        }
+        else
+        {
+            transform.position = startPosition;
+        }
+    }
+
+    public void Reiniciar()
+    {
+        GameManager.Instance.SavePlayerPosition(transform.position);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void Update()

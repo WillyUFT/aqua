@@ -12,6 +12,11 @@ public class EnemyDmg : MonoBehaviour, IDamageable
     [SerializeField]
     public float velocidadMovimiento = 0;
 
+    [Header("Nousagi rango")]
+    [SerializeField] bool rangeNousagi;
+    DisparosNousagi disparosNousagi;
+
+
     [Header("Golpeado")]
     private int vecesGolpeado = 0;
     public bool golpeado = false;
@@ -71,6 +76,7 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         physicsCollider = GetComponent<Collider2D>();
         flashEffect = GetComponent<FlashEffect>();
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        disparosNousagi = GetComponent<DisparosNousagi>();
         vidaMaxima = Vida;
         if (gameObject.tag != "jefe" && gameObject.tag != "npc")
         {
@@ -79,7 +85,6 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         else if (gameObject.tag == "jefe" || gameObject.tag == "npc")
         {
             barraVidaBoss.SetVidaInicial(vidaMaxima);
-            // barraLimpieza.SetVidaInicial(vidaLimpiezaMaxima);
         }
     }
 
@@ -119,6 +124,11 @@ public class EnemyDmg : MonoBehaviour, IDamageable
         {
             volverInvencible(4);
             vecesGolpeado = 0;
+        }
+
+        if (disparosNousagi != null && golpeado && rangeNousagi)
+        {
+            disparosNousagi.LanzarMisilConFrecuenciaAleatoria();
         }
     }
 
@@ -342,6 +352,9 @@ public class EnemyDmg : MonoBehaviour, IDamageable
                 direccionMovimiento = new Vector2(velocidadMovimiento, rb.velocity.y);
             }
             rb.velocity = direccionMovimiento;
+
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            Debug.Log("Nueva velocidad: " + rb.velocity);
         }
     }
 }

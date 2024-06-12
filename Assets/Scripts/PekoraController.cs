@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class PekoraController : MonoBehaviour
@@ -9,6 +10,10 @@ public class PekoraController : MonoBehaviour
     [SerializeField] public Rigidbody2D rigidBody;
     [SerializeField] private GameObject barraVida;
     [SerializeField] private GameObject barraLimpieza;
+    private BarraLimpieza barraLimpiezaScript;
+    [SerializeField]
+
+    private PlayerCombatController aqua;
 
     [SerializeField] public Animator animator;
 
@@ -16,6 +21,11 @@ public class PekoraController : MonoBehaviour
     [SerializeField] private float fuerzaDashNormal;
 
     [SerializeField] private float duracionDashNormal;
+
+    private bool atacandoEspada = false;
+    [SerializeField] private float dmgEspada;
+    [SerializeField] private float dmgTocar;
+
 
     [Header("Ataque misil")]
     [SerializeField] public GameObject misilPrefab;
@@ -38,12 +48,14 @@ public class PekoraController : MonoBehaviour
     [SerializeField]
     private AudioClip espadaSonido;
 
+
     void Awake()
     {
         bossController = GetComponent<BossController>();
         enemyDmg = GetComponent<EnemyDmg>();
         zanahoriaPekoraController = misilPrefab.GetComponent<ZanahoriaPekoraController>();
         rigidBody.isKinematic = true;
+        barraLimpiezaScript = barraLimpieza.GetComponent<BarraLimpieza>();
 
         if (bossController == null)
         {
@@ -53,7 +65,7 @@ public class PekoraController : MonoBehaviour
 
     public void Morir()
     {
-        if (enemyDmg.vida <= 0 && !pekoraMuerta)
+        if ((enemyDmg.vida <= 0 || barraLimpiezaScript.vidaActual <= 0) && !pekoraMuerta)
         {
             pekoraMuerta = true;
             SetNpc(true);
@@ -62,6 +74,7 @@ public class PekoraController : MonoBehaviour
             barraVida.SetActive(false);
             gameObject.tag = "npc";
             enemyDmg.SetMuerto(true);
+            barraLimpieza.SetActive(false);
         }
     }
 
@@ -109,7 +122,8 @@ public class PekoraController : MonoBehaviour
 
     private void EnojarPekora()
     {
-        if (!pekoraEnojada && enemyDmg.vida <= enemyDmg.vidaMaxima * 0.5)
+        if (!pekoraEnojada && (enemyDmg.vida <= enemyDmg.vidaMaxima * 0.5 ||
+         barraLimpiezaScript.vidaActual <= barraLimpiezaScript.vidaMaxima * 0.5))
         {
             pekoraEnojada = true;
             animator.SetTrigger("enojada");
@@ -145,8 +159,21 @@ public class PekoraController : MonoBehaviour
         bossController.setPuedeMoverse(false);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (atacandoEspada && other.collider.tag == "Player" && !pekoraMuerta)
+        {
+            aqua.RecibirDmg(dmgEspada);
+        }
+        else if (!atacandoEspada && other.collider.tag == "Player" && !pekoraMuerta)
+        {
+            aqua.RecibirDmg(dmgTocar);
+        }
+    }
+
     public void AtaqueNormal()
     {
+        atacandoEspada = true;
         SoundManager.instance.PlaySound(espadaSonido);
         rigidBody.velocity = new Vector2(fuerzaDashNormal * -transform.localScale.x, 0);
         animator.SetTrigger("attackDash");
@@ -160,6 +187,7 @@ public class PekoraController : MonoBehaviour
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         bossController.setPuedeMoverse(true);
         enemyDmg.Invencible = false;
+        atacandoEspada = false;
     }
 
     //* -------------------------------------------------------------------------- */
@@ -209,5 +237,55 @@ public class PekoraController : MonoBehaviour
         bossController.setPuedeMoverse(true);
         animator.SetBool("rocket", false);
         enemyDmg.Invencible = false;
+    }
+
+    //* --------------------------------------------------------------------- */
+    //*                                MOVERSE                                */
+    //* --------------------------------------------------------------------- */
+    public void moverHaciaJugador(float velocidadMovimiento)
+    {
+        if (bossController.getPuedeMoverse())
+        {
+            bossController.MirarJugador();
+
+            float direccionHaciaJugador = bossController.jugadorTransform.position.x - rigidBody.position.x;
+            float distanciaMovimiento = Random.Range(1.6f, Mathf.Max(1.6f, direccionHaciaJugador - 1.5f));
+
+            Vector2 direccionMovimiento;
+            if (direccionHaciaJugador < 0)
+            {
+                direccionMovimiento = new Vector2(-velocidadMovimiento, rigidBody.velocity.y);
+            }
+            else
+            {
+                direccionMovimiento = new Vector2(velocidadMovimiento, rigidBody.velocity.y);
+            }
+
+            StartCoroutine(MoverYDetener(distanciaMovimiento, direccionMovimiento, velocidadMovimiento));
+        }
+    }
+
+    private IEnumerator MoverYDetener(float distanciaMovimiento, Vector2 direccionMovimiento, float velocidadMovimiento)
+    {
+        float distanciaRecorrida = 0;
+        while (distanciaRecorrida < distanciaMovimiento)
+        {
+            rigidBody.velocity = direccionMovimiento;
+            distanciaRecorrida += velocidadMovimiento * Time.deltaTime;
+            yield return null;
+        }
+        DetenerMovimiento();
+        yield return new WaitForSeconds(0.1f);
+        rigidBody.drag = 0f;
+        JefeCaminarBehaviour jefeCaminarBehaviour = animator.GetBehaviour<JefeCaminarBehaviour>();
+        jefeCaminarBehaviour.activarAtaques(animator);
+    }
+
+    private void DetenerMovimiento()
+    {
+        rigidBody.velocity = Vector2.zero;
+        rigidBody.angularVelocity = 0f;
+        // Aplicar una fuerza de frenado si es necesario
+        rigidBody.drag = 10f; // Esto aumentará la fricción lineal para detener el movimiento.
     }
 }

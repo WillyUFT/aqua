@@ -8,7 +8,7 @@ public class BarraLimpieza : MonoBehaviour
 
     private Slider slider;
     [Header("Vida")]
-    private float vidaMaxima;
+    public float vidaMaxima;
     public float vidaActual;
     private PekoraController pekoraController;
 

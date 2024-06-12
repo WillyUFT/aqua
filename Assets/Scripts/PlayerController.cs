@@ -410,14 +410,17 @@ public class PlayerController : MonoBehaviour
 
             foreach (GameObject button in gameObjects)
             {
-                PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
-                if (pekora.GetNpc())
+                if (npcController != null)
                 {
-                    button.GetComponent<Image>().enabled = true;
-                }
-                else
-                {
-                    button.GetComponent<Image>().enabled = false;
+                    PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
+                    if (pekora.GetNpc())
+                    {
+                        button.GetComponent<Image>().enabled = true;
+                    }
+                    else
+                    {
+                        button.GetComponent<Image>().enabled = false;
+                    }
                 }
             }
 

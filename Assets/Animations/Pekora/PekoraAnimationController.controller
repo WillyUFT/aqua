@@ -629,7 +629,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: distanciaJugador
-    m_EventTreshold: 2
+    m_EventTreshold: 5
   - m_ConditionMode: 1
     m_ConditionEvent: attack
     m_EventTreshold: 0

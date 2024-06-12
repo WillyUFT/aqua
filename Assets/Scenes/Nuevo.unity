@@ -1065,7 +1065,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &91162169
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5f66ced752bad42b91954b8364f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 10
+  vidaMaxima: 10000
   vidaActual: 0
   playerCombatController: {fileID: 1887207275}
   playerCleaningController: {fileID: 1887207288}
@@ -3552,7 +3552,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &301529864
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -5754,7 +5754,7 @@ Transform:
   m_GameObject: {fileID: 540408132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.87, y: -67.44, z: 0}
+  m_LocalPosition: {x: 242.15, y: -67.46, z: 0}
   m_LocalScale: {x: 1, y: 14.8119, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6364,7 +6364,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &610243743
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -6967,9 +6967,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1148205959}
-    - targetCorrespondingSourceObject: {fileID: 3304912386617282202, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1148205958}
   m_SourcePrefab: {fileID: 100100000, guid: 017aa0ea6c8a25244ae401e0a8a34618, type: 3}
 --- !u!1 &660941947
 GameObject:
@@ -7515,7 +7512,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &669486377
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -7979,6 +7976,8 @@ MonoBehaviour:
   offSet: {x: 0, y: 2, z: 0}
   target: {fileID: 1148205949}
   camara: {fileID: 727552805}
+  jefeTransform: {fileID: 1148205949}
+  uiElement: {fileID: 689702748}
 --- !u!1 &694212677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8106,7 +8105,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &707859581
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -9769,7 +9768,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &824451528
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -10583,7 +10582,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &923136375
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -12663,7 +12662,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!19719996 &1064388354
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -13501,10 +13500,13 @@ MonoBehaviour:
   esNpc: 1
   rigidBody: {fileID: 1148205941}
   barraVida: {fileID: 1340084259}
-  barraLimpieza: {fileID: 0}
+  barraLimpieza: {fileID: 2125089224}
+  aqua: {fileID: 1887207275}
   animator: {fileID: 1148205940}
-  fuerzaDashNormal: 8
-  duracionDashNormal: 0.25
+  fuerzaDashNormal: 12
+  duracionDashNormal: 0.4
+  dmgEspada: 100
+  dmgTocar: 50
   misilPrefab: {fileID: 432810261993505197, guid: a7106134346ea7442944bfe973dfae42, type: 3}
   pekoraEnojada: 0
   pekoraMuerta: 0
@@ -13548,20 +13550,6 @@ MonoBehaviour:
   dmgInvencibleSound: {fileID: 8300000, guid: a0326f9fef3a4a8498652a1890134770, type: 3}
   saltoNousagi: {fileID: 8300000, guid: b1a2c1129d5067f44a8a2b1352e0e4d1, type: 3}
   dmgPekora: {fileID: 8300000, guid: cb4f8bb900fdb45c7a753937a2059076, type: 3}
---- !u!114 &1148205958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148205938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c243dc8b269784c8d8dc71316efe15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAttack: 30
-  dmgTouch: 15
 --- !u!114 &1148205959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15081,7 +15069,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 0}
-  descubrirCamino: {fileID: 0}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!1 &1250772259
 GameObject:
   m_ObjectHideFlags: 0
@@ -15992,7 +15980,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!1 &1359992604
 GameObject:
   m_ObjectHideFlags: 0
@@ -17349,7 +17337,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!1 &1600762816
 GameObject:
   m_ObjectHideFlags: 0
@@ -60960,8 +60948,8 @@ Transform:
   m_GameObject: {fileID: 2003520162}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 113.5271, y: -1.14, z: -0.63911206}
-  m_LocalScale: {x: 13.675335, y: 11.87323, z: 1}
+  m_LocalPosition: {x: 113.5478, y: -1.14, z: -0.63911206}
+  m_LocalScale: {x: 13.716361, y: 11.87323, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1137867310}
@@ -61233,7 +61221,7 @@ MonoBehaviour:
   vidaMaximaSuciedad: 200
   vidaActualSuciedad: 0
   barraLimpieza: {fileID: 2125089226}
-  descubrirCamino: {fileID: 8300000, guid: 971b94cf61e14934d977cb4a778ef434, type: 3}
+  descubrirCamino: {fileID: 8300000, guid: 45cac6b8f3c0c224da80b66bf21fb708, type: 3}
 --- !u!1 &2022359425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5591128852569768012, guid: a7abd0fae9de84a17b58b3aca5cc4c2a, type: 3}
@@ -62450,6 +62438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2230d49361fa636448896b2a7a723b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidaMaxima: 0
   vidaActual: 2200
 --- !u!114 &2125089227
 MonoBehaviour:

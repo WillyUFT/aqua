@@ -48,12 +48,12 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         int layerIndex
     )
     {
-        moverHaciaJugador();
-        activarAtaques(animator);
+        pekoraController.moverHaciaJugador(velocidadMovimiento);
+        // activarAtaques(animator);
 
     }
 
-    private void activarAtaques(Animator animator)
+    public void activarAtaques(Animator animator)
     {
 
         float distanciaJugador = bossController.getDistanciaJugador();
@@ -62,32 +62,11 @@ public class JefeCaminarBehaviour : StateMachineBehaviour
         {
             animator.SetBool("rocket", true);
         }
-        else if (distanciaJugador <= 3.5)
+        else if (distanciaJugador <= 4.5)
         {
             animator.SetBool("attack", true);
         }
 
-    }
-
-    private void moverHaciaJugador()
-    {
-        if (bossController.getPuedeMoverse())
-        {
-            bossController.MirarJugador();
-
-            float direccionHaciaJugador = bossController.jugadorTransform.position.x - rigidBody.position.x;
-
-            Vector2 direccionMovimiento;
-            if (direccionHaciaJugador < 0)
-            {
-                direccionMovimiento = new Vector2(-velocidadMovimiento, rigidBody.velocity.y);
-            }
-            else
-            {
-                direccionMovimiento = new Vector2(velocidadMovimiento, rigidBody.velocity.y);
-            }
-            rigidBody.velocity = direccionMovimiento;
-        }
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

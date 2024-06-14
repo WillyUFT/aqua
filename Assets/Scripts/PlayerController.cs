@@ -427,7 +427,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "npc")
         {
+
             npcController = other.gameObject.GetComponent<NpcController>();
+            PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
 
             // * Acá va
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("npcButton");
@@ -436,7 +438,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (npcController != null)
                 {
-                    PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
+
                     if (pekora.GetNpc())
                     {
                         button.GetComponent<Image>().enabled = true;
@@ -448,9 +450,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) && !pekora.pekoraMuerta)
             {
                 npcController.ActivateDialogue();
+            }
+            else if (Input.GetKey(KeyCode.E) && pekora.pekoraMuerta)
+            {
+                npcController.ActivarDialogueFinal();
             }
         }
     }

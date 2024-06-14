@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class NpcController : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogue;
+    [SerializeField] private GameObject dialogue1;
+    [SerializeField] private GameObject dialogue2;
     [SerializeField]
     private PlayerController playerController;
     [SerializeField]
@@ -21,7 +22,17 @@ public class NpcController : MonoBehaviour
         {
             DesactivarMovimiento(false);
             playerController.frenarSeco();
-            dialogue.SetActive(true);
+            dialogue1.SetActive(true);
+        }
+    }
+
+    public void ActivarDialogueFinal()
+    {
+        if (pekoraController.GetNpc())
+        {
+            DesactivarMovimiento(false);
+            playerController.frenarSeco();
+            dialogue2.SetActive(true);
         }
     }
 
@@ -36,7 +47,7 @@ public class NpcController : MonoBehaviour
 
     public bool DialogueActive()
     {
-        return dialogue.activeInHierarchy;
+        return dialogue1.activeInHierarchy;
     }
 
 }

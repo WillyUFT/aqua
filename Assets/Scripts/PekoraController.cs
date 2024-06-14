@@ -47,12 +47,16 @@ public class PekoraController : MonoBehaviour
     private AudioClip coheteSonido;
     [SerializeField]
     private AudioClip espadaSonido;
+    [SerializeField]
+    private AudioClip pekoraMuerte;
+    MusicaPekoracontroller musicaPekoracontroller;
 
 
     void Awake()
     {
         bossController = GetComponent<BossController>();
         enemyDmg = GetComponent<EnemyDmg>();
+        musicaPekoracontroller = GetComponent<MusicaPekoracontroller>();
         zanahoriaPekoraController = misilPrefab.GetComponent<ZanahoriaPekoraController>();
         rigidBody.isKinematic = true;
         barraLimpiezaScript = barraLimpieza.GetComponent<BarraLimpieza>();
@@ -76,8 +80,32 @@ public class PekoraController : MonoBehaviour
             enemyDmg.SetMuerto(true);
             barraLimpieza.SetActive(false);
             DesactivarSuciedadPekora();
+            activarPekoraDialogoCuadroTrigger();
         }
     }
+
+
+    private void activarPekoraDialogoCuadroTrigger()
+    {
+        StartCoroutine(PlaySoundAndActivateDialog());
+    }
+
+    private IEnumerator PlaySoundAndActivateDialog()
+    {
+        SoundManager.instance.PlaySound(pekoraMuerte);
+
+        // Hacer fade out y cambiar la música
+        musicaPekoracontroller.CambiarMusicaConFade(pekoraMuerte.length / 1.5f);
+
+        yield return new WaitForSeconds(pekoraMuerte.length);
+
+        GameObject pekoraDialogo = gameObject.transform.Find("PekoraDialogo").gameObject;
+        if (pekoraDialogo != null)
+        {
+            pekoraDialogo.SetActive(true);
+        }
+    }
+
 
     private void DesactivarSuciedadPekora()
     {

@@ -427,7 +427,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "npc")
         {
-
             npcController = other.gameObject.GetComponent<NpcController>();
             PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
 
@@ -458,6 +457,7 @@ public class PlayerController : MonoBehaviour
             {
                 npcController.ActivarDialogueFinal();
             }
+
         }
     }
 

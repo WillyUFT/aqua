@@ -18,7 +18,6 @@ public class MenuGameOver : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("SSDFa");
     }
 
     public void Reiniciar()

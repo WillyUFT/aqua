@@ -22,7 +22,7 @@ public class PekoraController : MonoBehaviour
 
     [SerializeField] private float duracionDashNormal;
 
-    private bool atacandoEspada = false;
+    public bool atacandoEspada = false;
     [SerializeField] private float dmgEspada;
     [SerializeField] private float dmgTocar;
 
@@ -77,6 +77,7 @@ public class PekoraController : MonoBehaviour
             animator.SetTrigger("morir");
             barraVida.SetActive(false);
             gameObject.tag = "npc";
+            gameObject.layer = LayerMask.NameToLayer("NPC");
             enemyDmg.SetMuerto(true);
             barraLimpieza.SetActive(false);
             DesactivarSuciedadPekora();
@@ -138,6 +139,7 @@ public class PekoraController : MonoBehaviour
         {
             desactivada = false;
             rigidBody.isKinematic = false;
+            gameObject.layer = LayerMask.NameToLayer("Enemigo");
             bossController.IniciarExitIdleState();
         }
     }
@@ -199,11 +201,11 @@ public class PekoraController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (atacandoEspada && other.collider.tag == "Player" && !pekoraMuerta)
+        if (!GetNpc() && atacandoEspada && other.collider.tag == "Player" && !pekoraMuerta)
         {
             aqua.RecibirDmg(dmgEspada);
         }
-        else if (!atacandoEspada && other.collider.tag == "Player" && !pekoraMuerta)
+        else if (!GetNpc() && !atacandoEspada && other.collider.tag == "Player" && !pekoraMuerta)
         {
             aqua.RecibirDmg(dmgTocar);
         }

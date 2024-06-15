@@ -15,6 +15,9 @@ public class DisparosNousagi : MonoBehaviour
     [SerializeField]
     private AudioClip coheteSonido;
 
+    private List<Coroutine> activeCoroutines = new List<Coroutine>();
+
+
     private void Start()
     {
         enemyDmg = GetComponent<EnemyDmg>();
@@ -31,7 +34,22 @@ public class DisparosNousagi : MonoBehaviour
 
     public void LanzarMisil()
     {
-        StartCoroutine(LanzarMisilesCoroutine());
+        Coroutine coroutine = StartCoroutine(LanzarMisilesCoroutine());
+        activeCoroutines.Add(coroutine);
+    }
+
+    public void StopAllActiveCoroutines()
+    {
+        foreach (Coroutine coroutine in activeCoroutines)
+        {
+            StopCoroutine(coroutine);
+        }
+        activeCoroutines.Clear();
+    }
+
+    private void OnDisable()
+    {
+        StopAllActiveCoroutines();
     }
 
     private IEnumerator LanzarMisilesCoroutine()

@@ -63,10 +63,12 @@ public class EnemyCombatController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+
+        PekoraController pekoraController = GetComponent<PekoraController>();
+
+        if (other.gameObject.CompareTag("Player") && pekoraController == null)
         {
             playerCombatController.RecibirDmg(ataqueEnemigo.getDmgTouch());
-
         }
     }
 }

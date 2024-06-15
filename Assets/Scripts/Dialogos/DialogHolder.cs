@@ -47,12 +47,22 @@ namespace DialogueSystem
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Escape) && transform.name != "cuadro dialogo Final")
             {
                 Deactivate();
                 gameObject.SetActive(false);
                 StopCoroutine(dialogSeg);
                 VolverJugar();
+            }
+            else if (Input.GetKey(KeyCode.Escape) && transform.name == "cuadro dialogo Final")
+            {
+                {
+                    FadeOutController fadeController = FindObjectOfType<FadeOutController>();
+                    if (fadeController != null)
+                    {
+                        fadeController.fadeout();
+                    }
+                }
             }
         }
 
@@ -64,11 +74,28 @@ namespace DialogueSystem
             {
                 Deactivate();
                 transform.GetChild(i).gameObject.SetActive(true);
+                if (transform.GetChild(i).gameObject.name == "Dialogo5Revivir")
+                {
+                    pekoraController.animator.SetTrigger("revivir");
+                }
                 yield return new WaitUntil(() => transform.GetChild(i).GetComponent<DialogueLine>().finished);
             }
 
             yield return new WaitForSeconds(0.2f);
-            VolverJugar();
+
+            if (transform.name != "cuadro dialogo Final")
+            {
+                VolverJugar();
+            }
+            else
+            {
+                FadeOutController fadeController = FindObjectOfType<FadeOutController>();
+                if (fadeController != null)
+                {
+                    fadeController.fadeout();
+                }
+            }
+
         }
 
         private void VolverJugar()
@@ -118,6 +145,7 @@ namespace DialogueSystem
         private void DesactivarMovimiento(bool valor)
         {
             playerController.activarDesactivarMovimiento(valor);
+            playerController.animator.SetBool("walk", false);
             playerController.SetSaltoBloqueado(!valor);
             playerCombatController.SetPuedeAtacar(valor);
             playerCombatController.SetPuedeBloquear(valor);

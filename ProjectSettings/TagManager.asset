@@ -18,6 +18,7 @@ TagManager:
   - mapa
   - tutorial
   - limitesLimpiezaPekora
+  - proyectilPekora
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Enemigo
   - DialogueTrigger
   - Aqua
-  - 
+  - NPC
   - 
   - 
   - 

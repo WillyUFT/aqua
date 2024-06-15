@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 61303203036688638}
   m_Layer: 8
   m_Name: zanahoriaGrande
-  m_TagString: proyectilEnemigo
+  m_TagString: proyectilPekora
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

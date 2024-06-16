@@ -39,6 +39,12 @@ public class BarraVidaAqua : MonoBehaviour
         portraitController = GetComponentInChildren<Portrait>();
     }
 
+    public void RecargarVida()
+    {
+        vidaActual = vidaMaxima;
+        ActualizarVida();
+    }
+
     public void ActualizarVida()
     {
         slider.value = vidaActual / vidaMaxima;

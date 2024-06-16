@@ -10,14 +10,17 @@ public class MenuGameOver : MonoBehaviour
 
     [SerializeField] private BarraVidaAqua barraVidaAqua;
     [SerializeField] private PlayerController playerController;
+    private GameObject fade;
 
     public void ActivarMenu()
     {
+        fade.SetActive(false);
         menuGameOver.SetActive(true);
     }
 
     public void Start()
     {
+        fade = gameObject.transform.Find("Fade").gameObject;
     }
 
     public void Reiniciar()

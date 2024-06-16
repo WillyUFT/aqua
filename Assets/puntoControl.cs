@@ -7,6 +7,8 @@ public class puntoControl : MonoBehaviour
 
     [SerializeField]
     private AudioClip sonido;
+    [SerializeField]
+    private BarraVidaAqua barraVidaAqua;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +16,8 @@ public class puntoControl : MonoBehaviour
         {
             SoundManager.instance.PlaySound(sonido);
             GameManager.Instance.SetLastCheckpoint(transform.position);
+            barraVidaAqua.RecargarVida();
+
         }
     }
 

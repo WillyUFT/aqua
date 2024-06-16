@@ -9,18 +9,17 @@ public class AudiosPekoraGolpe : MonoBehaviour
     [SerializeField] AudioClip[] audiosPekora;
     private AudioSource audioSource;
     private int ultimoIndice = -1;
-
+    PekoraController pekoraController;
     private void Start()
     {
         audioSource = Camera.main.GetComponent<AudioSource>();
+        pekoraController = GetComponent<PekoraController>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        PekoraController pekoraController = other.collider.GetComponent<PekoraController>();
 
-
-        if (other.collider.tag == "proyectilPekora" &&
+        if (other.collider.tag == "Player" &&
         (pekoraController != null && pekoraController.atacandoEspada))
         {
             ReproducirAudioAleatorio();
@@ -32,7 +31,7 @@ public class AudiosPekoraGolpe : MonoBehaviour
     {
         float probabilidad = UnityEngine.Random.Range(0f, 1f);
 
-        if (probabilidad <= 0.3f)
+        if (probabilidad <= 0.5f)
         {
             int indiceAleatorio;
             do
@@ -41,7 +40,7 @@ public class AudiosPekoraGolpe : MonoBehaviour
             } while (indiceAleatorio == ultimoIndice);
 
             AudioClip audioAleatorio = audiosPekora[indiceAleatorio];
-            audioSource.PlayOneShot(audioAleatorio);
+            SoundManager.instance.PlaySound(audioAleatorio);
 
             ultimoIndice = indiceAleatorio;
         }

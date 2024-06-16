@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     private NpcController npcController;
+    [SerializeField] PekoraController pekoraController;
 
     // * START POSITION
     public Vector2 startPosition;
@@ -428,7 +430,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "npc")
         {
             npcController = other.gameObject.GetComponent<NpcController>();
-            PekoraController pekora = npcController.GetComponentInParent<PekoraController>();
 
             // * Acá va
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("npcButton");
@@ -438,7 +439,7 @@ public class PlayerController : MonoBehaviour
                 if (npcController != null)
                 {
 
-                    if (pekora.GetNpc())
+                    if (pekoraController.GetNpc())
                     {
                         button.GetComponent<Image>().enabled = true;
                     }
@@ -449,11 +450,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.E) && !pekora.pekoraMuerta)
+            if (Input.GetKey(KeyCode.E) && !pekoraController.pekoraMuerta)
             {
                 npcController.ActivateDialogue();
             }
-            else if (Input.GetKey(KeyCode.E) && pekora.pekoraMuerta)
+            else if (Input.GetKey(KeyCode.E) && pekoraController.pekoraMuerta)
             {
                 npcController.ActivarDialogueFinal();
             }

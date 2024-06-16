@@ -19,18 +19,13 @@ public class PlayerCombatController : MonoBehaviour
 
     [Header("Daño")]
     [SerializeField]
+    private GameObject ataqueAnimacion;
+    [SerializeField]
+    private GameObject ataqueControlador;
+    [SerializeField]
     private Vector2 velocidadKnockBack;
     private bool estaInvulnerable = false;
 
-    [Header("Hitbox golpe normal")]
-    public Transform controladorGolpe;
-    public float anchoHitBoxNormal;
-    public float largoHitboxNormal;
-    public float dmgGolpeNormal;
-
-    [Header("Cooldown golpe normal")]
-    public float cooldownAtaqueNormal = 0.5f;
-    public float ultimoAtaqueNormal = 0;
     public bool puedeAtacar = true;
 
     [Header("Animaciones")]
@@ -94,42 +89,6 @@ public class PlayerCombatController : MonoBehaviour
         animator.SetTrigger("attack");
     }
 
-    public void GolpearNormal()
-    {
-        Vector2 tamanoCaja = new Vector2(anchoHitBoxNormal, largoHitboxNormal);
-
-        Collider2D[] objetos = Physics2D.OverlapBoxAll(
-            (Vector2)controladorGolpe.position,
-            tamanoCaja,
-            0
-        );
-
-        foreach (
-            var enemyTransform in objetos
-        )
-        {
-            var enemyDmg = enemyTransform.GetComponent<EnemyDmg>();
-
-            if (enemyTransform.CompareTag("enemigo"))
-            {
-                enemyDmg.RecibirDmg(dmgGolpeNormal, velocidadKnockBack);
-                SoundManager.instance.PlaySound(golpear);
-
-            }
-            else if (enemyTransform.CompareTag("jefe"))
-            {
-                PekoraController pekoraController = enemyTransform.GetComponent<PekoraController>();
-                if (pekoraController != null && !pekoraController.GetNpc())
-                {
-                    enemyDmg.RecibirDmg(dmgGolpeNormal);
-                }
-            }
-
-        }
-
-        cooldownAtaqueNormal = ultimoAtaqueNormal;
-    }
-
     public void Bloquear()
     {
         if (!saltando && puedeBloquear)
@@ -175,6 +134,18 @@ public class PlayerCombatController : MonoBehaviour
         }
     }
 
+    public void IniciarAnimacionAtaque()
+    {
+
+        Animator animatorAquaProyectil = ataqueAnimacion.GetComponent<Animator>();
+        AquaProyectil aquaProyectil = ataqueControlador.GetComponent<AquaProyectil>();
+
+        aquaProyectil.LimpiarEnemigosGolpeados();
+        aquaProyectil.SetAtacando(true);
+        animatorAquaProyectil.SetTrigger("atacar-proyectil");
+        ataqueControlador.SetActive(true);
+    }
+
     public void SetInvulnerable(bool valor)
     {
         estaInvulnerable = valor;
@@ -188,13 +159,6 @@ public class PlayerCombatController : MonoBehaviour
     public void SetPuedeBloquear(bool valor)
     {
         puedeBloquear = valor;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Vector2 tamanoCaja = new Vector2(anchoHitBoxNormal, largoHitboxNormal);
-        Gizmos.DrawWireCube((Vector2)controladorGolpe.position, tamanoCaja);
     }
 
     public void KnockbackDmg()

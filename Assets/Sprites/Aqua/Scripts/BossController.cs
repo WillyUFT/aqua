@@ -1,0 +1,106 @@
+using System.Collections;
+using UnityEngine;
+
+public class BossController : MonoBehaviour
+{
+    private Animator animator;
+
+    public Rigidbody2D rigidBody;
+
+    [Header("Movimiento")]
+    public Transform jugadorTransform;
+    public PlayerController playerController;
+
+    [SerializeField] public float distanciaUmbral;
+
+    [Header("Vida")]
+    [SerializeField] private float vida;
+
+    private bool puedeMoverse = true;
+    private float distanciaHorizontalJugador;
+    private float distanciaVerticalJugador;
+
+    private PekoraController pekoraController;
+
+    public void setPuedeMoverse(bool valor)
+    {
+        puedeMoverse = valor;
+    }
+
+    public bool getPuedeMoverse()
+    {
+        return puedeMoverse;
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        jugadorTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        pekoraController = GetComponent<PekoraController>();
+    }
+
+    private void Update()
+    {
+        distanciaHorizontalJugador = Vector2.Distance(transform.position, jugadorTransform.position);
+        // distanciaHorizontalJugador = Mathf.Abs(transform.position.x - jugadorTransform.position.x);
+        // distanciaHorizontalJugador = Mathf.Abs(transform.position.y - jugadorTransform.position.y);
+        animator.SetFloat("distanciaJugador", distanciaHorizontalJugador);
+    }
+
+    public float getDistanciaJugador()
+    {
+        return distanciaHorizontalJugador;
+    }
+
+    public bool jugadorPlataformaAire()
+    {
+        Debug.Log("Distancia vertical jugador: " + distanciaVerticalJugador);
+        Debug.Log("Saltando: " + !playerController.enSuelo);
+        return distanciaVerticalJugador >= 0 && !playerController.enSuelo;
+    }
+    public void MirarJugador()
+    {
+
+        if (!pekoraController.pekoraMuerta)
+        {
+            float direccionHaciaJugador = jugadorTransform.position.x - transform.position.x;
+
+            if (
+                (direccionHaciaJugador > 0 && transform.localScale.x > 0)
+                || (direccionHaciaJugador < 0 && transform.localScale.x < 0)
+            )
+            {
+                transform.localScale = new Vector3(
+                    -transform.localScale.x,
+                    transform.localScale.y,
+                    transform.localScale.z
+                );
+            }
+        }
+
+    }
+
+    public void IniciarExitIdleState()
+    {
+        StartCoroutine(ExitIdleState());
+    }
+
+    private IEnumerator ExitIdleState()
+    {
+        float waitTime = UnityEngine.Random.Range(1.5f, 2.0f);
+        yield return new WaitForSeconds(waitTime);
+
+        // Cambia a otro estado aquí
+        // animator.SetBool("idle", true);
+        animator.SetTrigger("idle");
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position, distanciaUmbral);
+    }
+}

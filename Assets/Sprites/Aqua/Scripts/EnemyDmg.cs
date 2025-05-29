@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class EnemyDmg : MonoBehaviour, IDamageable
 {
     //* -------------------------------- Variables ------------------------------- */
+    // jasjdajd
     [Header("Aqua")]
     public Transform jugador;
 
